@@ -47,7 +47,9 @@
       "Bash(git commit -m 'Update local permission settings *)",
       "Bash(git commit -m 'Mobile hero layout: centered copy on top, terrarium anchored bottom *)",
       "Bash(curl -s -o /dev/null -w \"live site: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/\")",
-      "Bash(git commit -m 'Kill dead black zones; mobile hero expands to fullscreen on scroll *)"
+      "Bash(git commit -m 'Kill dead black zones; mobile hero expands to fullscreen on scroll *)",
+      "Bash(curl -s -o /dev/null -w \"live: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/\")",
+      "Bash(git commit -m 'Remove seed-quote bridge; hero flows directly into the bloom section *)"
     ]
   }
 }

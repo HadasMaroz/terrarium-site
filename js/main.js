@@ -136,7 +136,7 @@ if (!prefersReduced) {
     /* mobile: the intro copy clears out immediately so the terrarium can take the screen */
     { el: ".hero__stage--1", enter: 0.00, exit: isSmall ? 0.09 : 0.24, holdIn: true },
     { el: ".hero__stage--2", enter: 0.34, exit: 0.62 },
-    { el: ".hero__stage--3", enter: 0.72, exit: 0.94 },
+    { el: ".hero__stage--3", enter: 0.72, exit: 1.00, holdOut: true },
   ];
 
   const stageTl = gsap.timeline({
@@ -167,19 +167,6 @@ if (!prefersReduced) {
     stageTl.fromTo(hero.state, { blend: 0 },
       { blend: 1, duration: 0.10, ease: "power1.inOut", onUpdate: hero.render }, 0.03);
   }
-
-  /* exit dissolve: the stream scene melts into the page background */
-  stageTl.fromTo(".hero__canvas",
-    { scale: 1, filter: "blur(0px)" },
-    { scale: 1.07, filter: "blur(9px)", duration: 0.07, ease: "power1.in" }, 0.93);
-  stageTl.fromTo(".hero__fade",
-    { opacity: 0 },
-    { opacity: 1, duration: 0.05, ease: "power1.in" }, 0.95);
-
-  /* bridge quote: fills the dark beat between the stream and the blooming flowers */
-  stageTl.fromTo(".hero__seed",
-    { autoAlpha: 0, filter: "blur(9px)", letterSpacing: "0.38em" },
-    { autoAlpha: 1, filter: "blur(0px)", letterSpacing: "0.05em", duration: 0.05, ease: "power2.out" }, 0.945);
 
   /* scroll hint: fade out immediately */
   gsap.to("#scrollHint", {
