@@ -34,7 +34,10 @@
       "Bash(curl -s \"https://api.github.com/repos/HadasMaroz/terrarium-site/commits?per_page=3\")",
       "Bash(git mv *)",
       "Bash(rmdir site *)",
-      "Bash(git commit -m 'Move site files from site/ to repo root *)"
+      "Bash(git commit -m 'Move site files from site/ to repo root *)",
+      "Bash(curl -s -o /dev/null -w \"site: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/\")",
+      "Bash(git fetch *)",
+      "Bash(git commit -m 'Update local settings *)"
     ]
   }
 }
