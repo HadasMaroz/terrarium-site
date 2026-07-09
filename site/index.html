@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terrar U — Living Ecosystems in Glass</title>
+  <meta name="description" content="Hand-crafted sealed terrariums. Self-sustaining forests that live for decades." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ======= Brand mark: small leaf inside a circle ======= -->
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="leaf-mark" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14.6" stroke="currentColor" stroke-width="1.6" />
+      <path d="M11.5 21.5C11.5 14.8 15.2 11.2 21.5 10.7C21.9 17.3 18.2 21 11.5 21.5Z" fill="var(--moss, #8fbf7f)" />
+      <path d="M12.6 20.4C14.2 16.9 16.6 14.4 19.8 12.6" stroke="var(--bg, #070a08)" stroke-width="0.9" stroke-linecap="round" />
+    </symbol>
+  </svg>
+
+  <!-- ======= Loader ======= -->
+  <div class="loader" id="loader">
+    <div class="loader__inner">
+      <span class="loader__logo"><svg class="logo-mark logo-mark--lg"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</span>
+      <div class="loader__bar"><div class="loader__fill" id="loaderFill"></div></div>
+      <span class="loader__pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header class="header" id="header">
+    <a class="header__logo" href="#top"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
+    <nav class="header__nav">
+      <a href="#collection">Collection</a>
+      <a href="#craft">Craft</a>
+      <a href="#footer">Contact</a>
+    </nav>
+    <button class="header__cart" id="cartBtn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="21" height="21">
+        <path d="M6 7h12l-1.2 12.2a1.5 1.5 0 0 1-1.5 1.3H8.7a1.5 1.5 0 0 1-1.5-1.3L6 7Z"/>
+        <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+      </svg>
+      <span class="header__cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <!-- ======= Hero: scroll-driven image sequence ======= -->
+  <section class="hero" id="top">
+    <div class="hero__sticky">
+      <canvas class="hero__canvas" id="seqCanvas"></canvas>
+      <div class="hero__vignette"></div>
+      <div class="hero__fade" aria-hidden="true"></div>
+      <p class="hero__seed" aria-hidden="true">Every forest begins with a single seed.</p>
+
+      <div class="hero__stage hero__stage--1" data-stage="1">
+        <div class="hero__intro">
+          <p class="hero__eyebrow reveal-line">Hand-sealed ecosystems</p>
+          <h1 class="hero__title">
+            <span class="reveal-line">Nature.</span>
+            <span class="reveal-line">Design.</span>
+            <span class="reveal-line">Home.</span>
+          </h1>
+          <p class="hero__sub reveal-line">Self-sustaining terrariums that live for decades — no watering, no upkeep. Just life, quietly unfolding behind glass.</p>
+          <div class="reveal-line">
+            <a class="btn btn--primary hero__cta" href="#collection">Shop the collection</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__stage hero__stage--2" data-stage="2">
+        <h2 class="hero__caption">Step inside.</h2>
+        <p class="hero__caption-sub">Behind the glass, an entire forest breathes — mist, light and living ground.</p>
+      </div>
+
+      <div class="hero__stage hero__stage--3" data-stage="3">
+        <h2 class="hero__caption hero__caption--final">Welcome Nature Inside</h2>
+        <a class="btn btn--primary" href="#collection">Explore the collection</a>
+      </div>
+
+      <div class="hero__scrollhint" id="scrollHint">
+        <span>Scroll</span>
+        <div class="hero__scrollhint-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Bloom: scroll-bound flower timelapse bridge ======= -->
+  <section class="bloom">
+    <div class="bloom__sticky">
+      <canvas class="bloom__canvas" id="bloomCanvas" aria-hidden="true"></canvas>
+      <blockquote class="bloom__quote bloom__quote--left">Seal a handful of forest behind glass, and it learns to live on its own &mdash;</blockquote>
+      <blockquote class="bloom__quote bloom__quote--right">breathing its own rain, feeding its own soil, blooming toward whatever light you give it.</blockquote>
+      <div class="bloom__fade" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ======= Collection ======= -->
+  <section class="collection" id="collection">
+    <div class="collection__head">
+      <p class="section-eyebrow">The Collection</p>
+      <h2 class="section-title">Sealed worlds,<br/>ready to live with you.</h2>
+    </div>
+
+    <div class="collection__grid" id="productGrid">
+      <!-- cards injected by JS -->
+    </div>
+  </section>
+
+  <!-- ======= Craft: scroll-bound hexagon sequence ======= -->
+  <section class="craft" id="craft">
+    <div class="craft__sticky">
+      <canvas class="craft__canvas" id="craftCanvas"></canvas>
+      <div class="craft__shade"></div>
+
+      <div class="craft__stage" data-craft="0">
+        <span class="craft__num">01</span>
+        <h3 class="craft__title">Gathered</h3>
+        <p class="craft__desc">Moss and ferns are ethically collected and quarantined for six weeks before composition.</p>
+      </div>
+      <div class="craft__stage" data-craft="1">
+        <span class="craft__num">02</span>
+        <h3 class="craft__title">Composed</h3>
+        <p class="craft__desc">Each landscape is built by hand — drainage, substrate, hardscape and planting, layer by layer.</p>
+      </div>
+      <div class="craft__stage" data-craft="2">
+        <span class="craft__num">03</span>
+        <h3 class="craft__title">Sealed</h3>
+        <p class="craft__desc">Once balanced, the vessel is corked. The water cycle begins, and never needs you again.</p>
+      </div>
+
+      <div class="craft__stage craft__stage--about" data-craft="3" id="about">
+        <div class="about__grid">
+          <div class="about__text">
+            <p class="section-eyebrow">The Maker</p>
+            <h3 class="about__title">Hi, I'm Shlomi!</h3>
+            <p>Shlomi Meroz is a dedicated father of three boys and a passionate creator with a deep love for nature and craftsmanship. Balancing the energetic, joyful chaos of raising three young sons with his creative pursuits, Shlomi finds his perfect rhythm in both family life and his unique hands-on hobbies.</p>
+            <p>When he isn&rsquo;t busy being a hands-on dad, Shlomi channels his patience and attention to detail into building beautiful, custom terrariums. What started as a fascinating hobby has grown into a true art form for him&mdash;designing self-sustaining miniature ecosystems encased in glass. Each terrarium is a reflection of his appreciation for nature, combining layers of earth, moss, and delicate greenery to create a peaceful, living piece of art.</p>
+            <p>Whether he is navigating the adventures of fatherhood or meticulously sculpting a tiny green world, Shlomi brings creativity, dedication, and a thoughtful touch to everything he does.</p>
+          </div>
+          <div class="about__media">
+            <img src="assets/about-shlomi.webp" alt="Shlomi Meroz composing a terrarium with tweezers at his studio table" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer" id="footer">
+    <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
+    <h2 class="footer__title">Terrar&nbsp;U</h2>
+    <p class="footer__tag">Living ecosystems in glass — est. 2025</p>
+    <div class="footer__links">
+      <a href="#">Instagram</a>
+      <a href="#">Care Guide</a>
+      <a href="#">Shipping</a>
+      <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
+    </div>
+    <p class="footer__legal">© 2026 Terrar U. All rights reserved.</p>
+  </footer>
+
+  <!-- ======= Toast ======= -->
+  <div class="toast" id="toast">Added to cart</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ffmpeg -hide_banner -loglevel error -i \"D:\\\\סטודיו 2025\\\\קלוד קוד\\\\טרריום\\\\סרטון ללא כותרת.mp4\" \"D:\\\\סטודיו 2025\\\\קלוד קוד\\\\טרריום\\\\image_sequence\\\\frame_%04d.png\")",
+      "Bash(ffmpeg -hide_banner -loglevel error -i \"image_sequence/frame_%04d.png\" -vf scale=820:-2 -c:v libwebp -q:v 68 \"site/assets/seq-sm/f_%04d.webp\")",
+      "Bash(ls -lt \"D:\\\\סטודיו 2025\\\\קלוד קוד\\\\טרריום\" | head -20; echo ---; find \"C:\\\\Users\\\\HOME\\\\AppData\\\\Local\\\\Temp\\\\claude\" -iname \"*.png\" -o -iname \"*.jpg\" -o -iname \"*.jpeg\" -o -iname \"*.webp\" 2>/dev/null | head -20; echo ---; ls -lt \"C:\\\\Users\\\\HOME\\\\Downloads\" 2>/dev/null | head -15)",
+      "Bash(ffprobe -v error -show_entries stream=width,height -of csv=p=0 \"מוצרים/1.jpg\")",
+      "Bash(ffprobe -v error -show_entries stream=width,height -of csv=p=0 \"מוצרים/2.jpg\")",
+      "Bash(ffprobe -v error -show_entries stream=width,height -of csv=p=0 \"מוצרים/3.jpg\")",
+      "Bash(ffmpeg -y -hide_banner -loglevel error -i \"מוצרים/שלומי.jpg\" -vf \"scale=900:-2\" -c:v libwebp -q:v 82 \"site/assets/about-shlomi.webp\")",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of default=noprint_wrappers=1 \"משושה.mp4\")",
+      "Bash(ffmpeg -y -hide_banner -loglevel error -i \".tmp-seq2/seq_%04d.png\" -vf scale=1440:-2 -c:v libwebp -q:v 68 \"site/assets/seq2-lg/f_%04d.webp\")",
+      "Bash(ffmpeg -y -hide_banner -loglevel error -i \".tmp-seq2/seq_%04d.png\" -vf scale=820:-2 -c:v libwebp -q:v 68 \"site/assets/seq2-sm/f_%04d.webp\")",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of default=noprint_wrappers=1 \"טרריום חדש.mp4\")",
+      "Bash(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames,codec_name,pix_fmt -show_entries format=duration -of default=noprint_wrappers=1 \"פרחים.mov\")",
+      "Bash(ffmpeg -hide_banner -loglevel error -i \"פרחים.mov\" \"image_sequence4/frame_%04d.png\")",
+      "Bash(ffmpeg -y -hide_banner -loglevel error -i \"image_sequence4/frame_%04d.png\" -vf scale=1440:-2 -c:v libwebp -q:v 68 \"site/assets/seq4-lg/f_%04d.webp\")",
+      "Bash(ffmpeg -y -hide_banner -loglevel error -i \"image_sequence4/frame_%04d.png\" -vf scale=820:-2 -c:v libwebp -q:v 68 \"site/assets/seq4-sm/f_%04d.webp\")",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(gh auth *)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

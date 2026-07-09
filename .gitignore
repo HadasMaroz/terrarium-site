@@ -1,0 +1,13 @@
+# Heavy source material — not needed to build/serve the site
+# (the site uses the optimized WebP copies inside site/assets)
+image_sequence/
+image_sequence2/
+image_sequence3/
+image_sequence4/
+*.mp4
+*.mov
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
