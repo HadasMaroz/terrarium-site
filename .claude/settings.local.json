@@ -37,7 +37,14 @@
       "Bash(git commit -m 'Move site files from site/ to repo root *)",
       "Bash(curl -s -o /dev/null -w \"site: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/\")",
       "Bash(git fetch *)",
-      "Bash(git commit -m 'Update local settings *)"
+      "Bash(git commit -m 'Update local settings *)",
+      "Skill(fewer-permission-prompts)",
+      "Skill(fewer-permission-prompts:*)",
+      "Bash(ls -t \"C:\\\\Users\\\\HOME\\\\.claude\\\\projects\"/*/*.jsonl 2>/dev/null | head -60 | wc -l; ls \"C:\\\\Users\\\\HOME\\\\.claude\\\\projects\" | head)",
+      "Bash(node \"C:\\\\Users\\\\HOME\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D---------2025----------------\\\\4a845737-4fd9-4f0c-853a-ff7503eebba7\\\\scratchpad\\\\scan_tools.js\")",
+      "Bash(git commit -m 'Add project permission allowlist for preview tools and ffprobe *)",
+      "Bash(curl -s \"https://api.github.com/repos/HadasMaroz/terrarium-site/contents/\")",
+      "Bash(git commit -m 'Update local permission settings *)"
     ]
   }
 }
