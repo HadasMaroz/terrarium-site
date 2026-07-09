@@ -527,7 +527,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .collection__grid { grid-template-columns: 1fr; }
   .hero { height: 280vh; }
 
-  /* mobile hero: centered copy on top, terrarium anchored to the bottom of the frame */
+  /* mobile hero: pure-black stage, centered copy on top, terrarium anchored bottom */
+  .hero__sticky { background: #000000; }
   .hero__stage--1 {
     place-content: start center;
     text-align: center;

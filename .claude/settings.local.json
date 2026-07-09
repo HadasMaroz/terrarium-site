@@ -45,7 +45,9 @@
       "Bash(git commit -m 'Add project permission allowlist for preview tools and ffprobe *)",
       "Bash(curl -s \"https://api.github.com/repos/HadasMaroz/terrarium-site/contents/\")",
       "Bash(git commit -m 'Update local permission settings *)",
-      "Bash(git commit -m 'Mobile hero layout: centered copy on top, terrarium anchored bottom *)"
+      "Bash(git commit -m 'Mobile hero layout: centered copy on top, terrarium anchored bottom *)",
+      "Bash(curl -s -o /dev/null -w \"live site: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/\")",
+      "Bash(git commit -m 'Kill dead black zones; mobile hero expands to fullscreen on scroll *)"
     ]
   }
 }

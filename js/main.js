@@ -17,7 +17,7 @@ const isSmall = Math.min(window.innerWidth, window.innerHeight) < 700 && window.
 function makeSeqPlayer(canvas, dir, frameCount, fit = "cover") {
   const ctx = canvas.getContext("2d");
   const images = new Array(frameCount).fill(null);
-  const state = { frame: 0 };
+  const state = { frame: 0, blend: 0 }; /* blend: 0 = bottom-anchored, 1 = fullscreen cover */
   let loadedCount = 0;
 
   const frameSrc = (i) => `${dir}/f_${String(i + 1).padStart(4, "0")}.webp`;
@@ -64,14 +64,18 @@ function makeSeqPlayer(canvas, dir, frameCount, fit = "cover") {
     const cw = canvas.width, ch = canvas.height;
     const iw = img.naturalWidth, ih = img.naturalHeight;
     ctx.clearRect(0, 0, cw, ch);
+    const coverScale = Math.max(cw / iw, ch / ih);
     if (fit === "bottom") {
-      /* mobile hero: zoomed frame anchored bottom-center, text lives above it */
-      const scale = (cw / iw) * 1.4;
+      /* mobile hero: bottom-anchored at rest, expands to fullscreen as blend → 1 */
+      const bScale = (cw / iw) * 1.4;
+      const t = Math.min(1, Math.max(0, state.blend));
+      const scale = bScale + (coverScale - bScale) * t;
       const dw = iw * scale, dh = ih * scale;
-      ctx.drawImage(img, (cw - dw) / 2, ch - dh, dw, dh);
+      const x = (cw - dw) / 2;
+      const yBottom = ch - dh, yCover = (ch - dh) / 2;
+      ctx.drawImage(img, x, yBottom + (yCover - yBottom) * t, dw, dh);
     } else {
-      const scale = Math.max(cw / iw, ch / ih); // cover
-      const dw = iw * scale, dh = ih * scale;
+      const dw = iw * coverScale, dh = ih * coverScale;
       ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
     }
   }
@@ -129,7 +133,8 @@ if (!prefersReduced) {
 
   /* text stages: one master timeline (duration 1) mapped onto the hero scroll distance */
   const stages = [
-    { el: ".hero__stage--1", enter: 0.00, exit: 0.24, holdIn: true },
+    /* mobile: the intro copy clears out immediately so the terrarium can take the screen */
+    { el: ".hero__stage--1", enter: 0.00, exit: isSmall ? 0.09 : 0.24, holdIn: true },
     { el: ".hero__stage--2", enter: 0.34, exit: 0.62 },
     { el: ".hero__stage--3", enter: 0.72, exit: 0.94 },
   ];
@@ -157,6 +162,12 @@ if (!prefersReduced) {
     }
   });
 
+  /* mobile: as the copy clears, the terrarium grows from bottom-anchored to fullscreen */
+  if (isSmall) {
+    stageTl.fromTo(hero.state, { blend: 0 },
+      { blend: 1, duration: 0.10, ease: "power1.inOut", onUpdate: hero.render }, 0.03);
+  }
+
   /* exit dissolve: the stream scene melts into the page background */
   stageTl.fromTo(".hero__canvas",
     { scale: 1, filter: "blur(0px)" },
@@ -182,7 +193,7 @@ if (!prefersReduced) {
     {
       autoAlpha: 1, y: 0, filter: "blur(0px)",
       stagger: 0.18, ease: "power2.out",
-      scrollTrigger: { trigger: ".collection", start: "top 94%", end: "top 55%", scrub: 0.4 },
+      scrollTrigger: { trigger: ".collection", start: "top 99%", end: "top 62%", scrub: 0.4 },
     });
 }
 
@@ -255,8 +266,9 @@ if (!prefersReduced) {
     },
   });
   bloomTl.set({}, {}, 1);
-  bloomTl.fromTo(".bloom__fade", { opacity: 1 }, { opacity: 0, duration: 0.03 }, 0);
-  bloomTl.to(".bloom__fade", { opacity: 1, duration: 0.06 }, 0.92); /* soft exit fade */
+  /* no entry fade — the buds are already on screen as the section arrives */
+  gsap.set(".bloom__fade", { opacity: 0 });
+  bloomTl.to(".bloom__fade", { opacity: 1, duration: 0.06 }, 0.94); /* soft exit fade */
 
   /* typewriter: characters land one by one, tied to the scroll */
   const typeQuote = (sel, from, to) => {
