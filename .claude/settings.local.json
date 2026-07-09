@@ -20,7 +20,21 @@
       "Bash(gh --version)",
       "Bash(gh auth *)",
       "Bash(git init *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git config *)",
+      "Bash(git commit -m 'Terrar U — scroll-driven terrarium store site *)",
+      "Bash(timeout 20 git ls-remote origin)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(git push *)",
+      "Bash(timeout 20 git ls-remote origin main)",
+      "Bash(git credential *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://hadasmaroz.github.io/terrarium-site/\")",
+      "Bash(curl -s \"https://hadasmaroz.github.io/terrarium-site/\")",
+      "Bash(curl -s -o /dev/null -w \"seq frame: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/assets/seq3-lg/f_0001.webp\")",
+      "Bash(curl -s \"https://api.github.com/repos/HadasMaroz/terrarium-site/commits?per_page=3\")",
+      "Bash(git mv *)",
+      "Bash(rmdir site *)",
+      "Bash(git commit -m 'Move site files from site/ to repo root *)"
     ]
   }
 }
