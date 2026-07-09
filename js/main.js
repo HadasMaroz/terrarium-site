@@ -14,7 +14,7 @@ if (!prefersReduced) {
 /* ---------- Scroll-bound image sequence player ---------- */
 const isSmall = Math.min(window.innerWidth, window.innerHeight) < 700 && window.innerWidth < 820;
 
-function makeSeqPlayer(canvas, dir, frameCount) {
+function makeSeqPlayer(canvas, dir, frameCount, fit = "cover") {
   const ctx = canvas.getContext("2d");
   const images = new Array(frameCount).fill(null);
   const state = { frame: 0 };
@@ -63,10 +63,17 @@ function makeSeqPlayer(canvas, dir, frameCount) {
     if (!img) return;
     const cw = canvas.width, ch = canvas.height;
     const iw = img.naturalWidth, ih = img.naturalHeight;
-    const scale = Math.max(cw / iw, ch / ih); // cover
-    const dw = iw * scale, dh = ih * scale;
     ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    if (fit === "bottom") {
+      /* mobile hero: zoomed frame anchored bottom-center, text lives above it */
+      const scale = (cw / iw) * 1.4;
+      const dw = iw * scale, dh = ih * scale;
+      ctx.drawImage(img, (cw - dw) / 2, ch - dh, dw, dh);
+    } else {
+      const scale = Math.max(cw / iw, ch / ih); // cover
+      const dw = iw * scale, dh = ih * scale;
+      ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    }
   }
 
   window.addEventListener("resize", sizeCanvas);
@@ -80,7 +87,8 @@ const HERO_FRAMES = 121;
 const hero = makeSeqPlayer(
   document.getElementById("seqCanvas"),
   isSmall ? "assets/seq3-sm" : "assets/seq3-lg",
-  HERO_FRAMES
+  HERO_FRAMES,
+  isSmall ? "bottom" : "cover"
 );
 
 const loaderEl = document.getElementById("loader");

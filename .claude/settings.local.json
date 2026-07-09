@@ -44,7 +44,8 @@
       "Bash(node \"C:\\\\Users\\\\HOME\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D---------2025----------------\\\\4a845737-4fd9-4f0c-853a-ff7503eebba7\\\\scratchpad\\\\scan_tools.js\")",
       "Bash(git commit -m 'Add project permission allowlist for preview tools and ffprobe *)",
       "Bash(curl -s \"https://api.github.com/repos/HadasMaroz/terrarium-site/contents/\")",
-      "Bash(git commit -m 'Update local permission settings *)"
+      "Bash(git commit -m 'Update local permission settings *)",
+      "Bash(git commit -m 'Mobile hero layout: centered copy on top, terrarium anchored bottom *)"
     ]
   }
 }

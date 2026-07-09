@@ -526,6 +526,22 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .header__nav { display: none; }
   .collection__grid { grid-template-columns: 1fr; }
   .hero { height: 280vh; }
+
+  /* mobile hero: centered copy on top, terrarium anchored to the bottom of the frame */
+  .hero__stage--1 {
+    place-content: start center;
+    text-align: center;
+    padding-top: calc(var(--header-h) + 12px);
+  }
+  .hero__intro { max-width: 100%; }
+  .hero__eyebrow { margin-bottom: 14px; }
+  .hero__title { font-size: clamp(2.7rem, 13.5vw, 3.6rem); }
+  .hero__sub {
+    max-width: 320px;
+    margin: 16px auto 0;
+    font-size: 0.85rem;
+  }
+  .hero__cta { margin-top: 20px; }
 }
 
 @media (max-width: 620px) {
