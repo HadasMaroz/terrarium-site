@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Terrar U</title>
+  <meta name="description" content="Custom terrarium commissions, corporate gifting and general questions — talk to the Terrar U studio." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/subpages.css" />
+</head>
+<body class="page">
+
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="leaf-mark" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14.6" stroke="currentColor" stroke-width="1.6" />
+      <path d="M11.5 21.5C11.5 14.8 15.2 11.2 21.5 10.7C21.9 17.3 18.2 21 11.5 21.5Z" fill="var(--moss, #8fbf7f)" />
+      <path d="M12.6 20.4C14.2 16.9 16.6 14.4 19.8 12.6" stroke="var(--bg, #070a08)" stroke-width="0.9" stroke-linecap="round" />
+    </symbol>
+  </svg>
+
+  <header class="header" id="header">
+    <a class="header__logo" href="index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
+    <nav class="header__nav">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">Our Story</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html" class="is-current">Contact</a>
+    </nav>
+    <button class="header__cart" id="cartBtn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="21" height="21">
+        <path d="M6 7h12l-1.2 12.2a1.5 1.5 0 0 1-1.5 1.3H8.7a1.5 1.5 0 0 1-1.5-1.3L6 7Z"/>
+        <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+      </svg>
+      <span class="header__cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <p class="section-eyebrow" data-reveal>Contact</p>
+      <h1 class="section-title" data-reveal>Let's build<br/>your world.</h1>
+    </section>
+
+    <div class="contact">
+      <div class="contact__info" data-reveal>
+        <p>Dreaming of a terrarium that doesn't exist yet? We take on custom commissions — one-of-a-kind vessels, specific plant palettes, tiny scenes with a story. We also build corporate gifts in series, each one slightly different, like the people receiving them.</p>
+        <ul class="contact__list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M12 21s-7-5.1-7-11a7 7 0 0 1 14 0c0 5.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            <span>Studio Terrar U, Tel Aviv</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor" stroke="none"/></svg>
+            <a href="#">@terrar.u</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Sun&ndash;Thu, 9:00&ndash;17:00</span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact__form" id="contactForm" data-reveal novalidate>
+        <div class="field">
+          <input type="text" id="cfName" name="name" placeholder=" " required />
+          <label for="cfName">Name</label>
+        </div>
+        <div class="field">
+          <input type="email" id="cfEmail" name="email" placeholder=" " required />
+          <label for="cfEmail">Email</label>
+        </div>
+        <div class="field">
+          <input type="text" id="cfSubject" name="subject" placeholder=" " />
+          <label for="cfSubject">Subject</label>
+        </div>
+        <div class="field">
+          <textarea id="cfMessage" name="message" placeholder=" " rows="4" required></textarea>
+          <label for="cfMessage">Tell us about your world</label>
+        </div>
+        <button class="btn btn--buy" type="submit">Send message</button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer">
+    <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
+    <h2 class="footer__title">Terrar&nbsp;U</h2>
+    <p class="footer__tag">Living ecosystems in glass — est. 2025</p>
+    <div class="footer__links">
+      <a href="#">Instagram</a>
+      <a href="blog.html">Care Guide</a>
+      <a href="#">Shipping</a>
+      <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
+    </div>
+    <p class="footer__legal">© 2026 Terrar U. All rights reserved.</p>
+  </footer>
+
+  <div class="toast" id="toast">Added to cart</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const name = document.getElementById("cfName");
+      const email = document.getElementById("cfEmail");
+      const msg = document.getElementById("cfMessage");
+      if (!name.value.trim() || !email.checkValidity() || !msg.value.trim()) {
+        showToast("Please fill in name, a valid email, and a message");
+        return;
+      }
+      form.reset();
+      showToast("Message sent — we'll be in touch within two days 🌱");
+    });
+  </script>
+</body>
+</html>

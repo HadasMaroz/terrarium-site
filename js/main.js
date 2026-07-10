@@ -380,15 +380,15 @@ if (!prefersReduced) {
 
 /* ---------- Products ---------- */
 const PRODUCTS = [
-  { id: 1, name: "The Bottled Grove", kind: "Corked bottle ecosystem", price: 259, img: "assets/products/p1.webp", badge: "Limited" },
-  { id: 2, name: "Bloom Orb", kind: "Wildflower meadow sphere", price: 289, img: "assets/products/p2.webp", badge: "Bestseller" },
-  { id: 3, name: "Terra Cube", kind: "Square glass forest", price: 229, img: "assets/products/p3.webp", badge: "New" },
+  { id: "bottled-grove", name: "The Bottled Grove", kind: "Corked bottle ecosystem", price: 259, img: "assets/products/p1.webp", badge: "Limited" },
+  { id: "bloom-orb", name: "Bloom Orb", kind: "Wildflower meadow sphere", price: 289, img: "assets/products/p2.webp", badge: "Bestseller" },
+  { id: "terra-cube", name: "Terra Cube", kind: "Square glass forest", price: 229, img: "assets/products/p3.webp", badge: "New" },
 ];
 
 const grid = document.getElementById("productGrid");
 grid.innerHTML = PRODUCTS.map(
   (p) => `
-  <article class="card" data-id="${p.id}">
+  <article class="card card--link" data-id="${p.id}" tabindex="0" role="link" aria-label="${p.name}, $${p.price}">
     <div class="card__media">
       <img src="${p.img}" alt="${p.name} — glass terrarium" />
       <span class="card__shine" aria-hidden="true"></span>
@@ -443,25 +443,43 @@ if (!prefersReduced) {
   gsap.set(".card", { opacity: 1, y: 0 });
 }
 
-/* ---------- Cart ---------- */
-let cartTotal = 0;
+/* ---------- Cart (persisted across pages via localStorage) ---------- */
+const CART_KEY = "terraru-cart-count";
 const cartCount = document.getElementById("cartCount");
 const toast = document.getElementById("toast");
 let toastTimer;
 
+function cartGet() {
+  return parseInt(localStorage.getItem(CART_KEY) || "0", 10) || 0;
+}
+function cartSet(n) {
+  localStorage.setItem(CART_KEY, String(n));
+  cartCount.textContent = n;
+  cartCount.classList.toggle("is-visible", n > 0);
+}
+cartSet(cartGet());
+
 grid.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-add]");
-  if (!btn) return;
-  const product = PRODUCTS.find((p) => p.id === Number(btn.dataset.add));
-  btn.classList.add("is-added");
-  setTimeout(() => btn.classList.remove("is-added"), 1400);
-  cartTotal++;
-  cartCount.textContent = cartTotal;
-  cartCount.classList.add("is-visible");
-  gsap.fromTo(cartCount, { scale: 1.5 }, { scale: 1, duration: 0.4, ease: "back.out(3)" });
+  if (btn) {
+    e.stopPropagation();
+    const product = PRODUCTS.find((p) => p.id === btn.dataset.add);
+    btn.classList.add("is-added");
+    setTimeout(() => btn.classList.remove("is-added"), 1400);
+    cartSet(cartGet() + 1);
+    gsap.fromTo(cartCount, { scale: 1.5 }, { scale: 1, duration: 0.4, ease: "back.out(3)" });
 
-  toast.textContent = `${product.name} added to cart`;
-  toast.classList.add("is-visible");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2200);
+    toast.textContent = `${product.name} added to cart`;
+    toast.classList.add("is-visible");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2200);
+    return;
+  }
+  const card = e.target.closest(".card--link");
+  if (card) window.location.href = `product.html?id=${card.dataset.id}`;
+});
+grid.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  const card = e.target.closest(".card--link");
+  if (card) window.location.href = `product.html?id=${card.dataset.id}`;
 });

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Terrar U</title>
+  <meta name="description" content="Hand-sealed terrariums: bottles, orbs, cubes and columns. Filter by size, shape and price." />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/subpages.css" />
+</head>
+<body class="page">
+
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="leaf-mark" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14.6" stroke="currentColor" stroke-width="1.6" />
+      <path d="M11.5 21.5C11.5 14.8 15.2 11.2 21.5 10.7C21.9 17.3 18.2 21 11.5 21.5Z" fill="var(--moss, #8fbf7f)" />
+      <path d="M12.6 20.4C14.2 16.9 16.6 14.4 19.8 12.6" stroke="var(--bg, #070a08)" stroke-width="0.9" stroke-linecap="round" />
+    </symbol>
+  </svg>
+
+  <header class="header" id="header">
+    <a class="header__logo" href="index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
+    <nav class="header__nav">
+      <a href="shop.html" class="is-current">Shop</a>
+      <a href="about.html">Our Story</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="header__cart" id="cartBtn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="21" height="21">
+        <path d="M6 7h12l-1.2 12.2a1.5 1.5 0 0 1-1.5 1.3H8.7a1.5 1.5 0 0 1-1.5-1.3L6 7Z"/>
+        <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+      </svg>
+      <span class="header__cart-count" id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="page-banner">
+      <p class="section-eyebrow" data-reveal>The Collection</p>
+      <h1 class="section-title" data-reveal>Sealed worlds,<br/>ready to live with you.</h1>
+      <p class="page-banner__sub" data-reveal>Every piece is composed by hand and sealed for decades. Most can be customized with plants and miniature figurines.</p>
+    </section>
+
+    <div class="filterbar" id="filterbar" data-reveal>
+      <div class="filterbar__group" data-filter="size">
+        <span class="filterbar__label">Size</span>
+        <button class="chip is-active" data-value="All">All</button>
+        <button class="chip" data-value="Small">Small</button>
+        <button class="chip" data-value="Medium">Medium</button>
+        <button class="chip" data-value="Large">Large</button>
+      </div>
+      <div class="filterbar__group" data-filter="shape">
+        <span class="filterbar__label">Shape</span>
+        <button class="chip is-active" data-value="All">All</button>
+        <button class="chip" data-value="Jar">Jar</button>
+        <button class="chip" data-value="Globe">Globe</button>
+        <button class="chip" data-value="Cylinder">Cylinder</button>
+        <button class="chip" data-value="Geometric">Geometric</button>
+      </div>
+      <div class="filterbar__group filterbar__group--sort">
+        <span class="filterbar__label">Sort</span>
+        <select id="sortSelect" class="filterbar__select">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+        </select>
+      </div>
+    </div>
+
+    <section class="shop">
+      <p class="shop__count" id="shopCount"></p>
+      <div class="shop__grid" id="shopGrid"></div>
+      <p class="shop__empty" id="shopEmpty" hidden>No worlds match this filter — try widening it.</p>
+    </section>
+  </main>
+
+  <footer class="footer" id="footer">
+    <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
+    <h2 class="footer__title">Terrar&nbsp;U</h2>
+    <p class="footer__tag">Living ecosystems in glass — est. 2025</p>
+    <div class="footer__links">
+      <a href="#">Instagram</a>
+      <a href="blog.html">Care Guide</a>
+      <a href="#">Shipping</a>
+      <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
+    </div>
+    <p class="footer__legal">© 2026 Terrar U. All rights reserved.</p>
+  </footer>
+
+  <div class="toast" id="toast">Added to cart</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>
