@@ -75,7 +75,7 @@ grid.addEventListener("click", (e) => {
     const p = findProduct(addBtn.dataset.add);
     addBtn.classList.add("is-added");
     setTimeout(() => addBtn.classList.remove("is-added"), 1400);
-    cartAdd(`${p.name} added to cart`);
+    Cart.add({ productId: p.id, name: p.name, img: p.img, base: p.price });
     return;
   }
   const card = e.target.closest(".card--link");

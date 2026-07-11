@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Admin — Terrar U</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/subpages.css" />
+</head>
+<body class="page">
+
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="leaf-mark" viewBox="0 0 32 32" fill="none">
+      <circle cx="16" cy="16" r="14.6" stroke="currentColor" stroke-width="1.6" />
+      <path d="M11.5 21.5C11.5 14.8 15.2 11.2 21.5 10.7C21.9 17.3 18.2 21 11.5 21.5Z" fill="var(--moss, #8fbf7f)" />
+      <path d="M12.6 20.4C14.2 16.9 16.6 14.4 19.8 12.6" stroke="var(--bg, #070a08)" stroke-width="0.9" stroke-linecap="round" />
+    </symbol>
+  </svg>
+
+  <header class="header" id="header">
+    <a class="header__logo" href="index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
+    <nav class="header__nav">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">Our Story</a>
+      <a href="blog.html">Journal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <span class="admin-badge">Studio Admin</span>
+  </header>
+
+  <main class="admin">
+    <section class="page-banner">
+      <p class="section-eyebrow">Backstage</p>
+      <h1 class="section-title">Product management</h1>
+      <p class="page-banner__sub">Changes are saved to this browser and applied instantly across the shop and product pages.</p>
+    </section>
+
+    <div class="admin__bar">
+      <button class="btn btn--buy admin__new" id="newBtn" type="button">+ New product</button>
+      <button class="chip" id="resetBtn" type="button">Reset to defaults</button>
+    </div>
+
+    <!-- product list -->
+    <div class="admin__tablewrap">
+      <table class="admin__table" id="adminTable">
+        <thead>
+          <tr>
+            <th></th><th>Product</th><th>Price</th><th>Stock</th><th>Size / Shape</th><th>Customizable</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="adminRows"></tbody>
+      </table>
+    </div>
+
+    <!-- editor -->
+    <section class="editor" id="editor" hidden>
+      <h2 class="editor__title" id="editorTitle">Edit product</h2>
+      <form class="editor__form" id="editorForm" novalidate>
+        <div class="editor__grid">
+          <div class="field">
+            <input type="text" id="fName" placeholder=" " required />
+            <label for="fName">Product name (English)</label>
+          </div>
+          <div class="field">
+            <input type="text" id="fKind" placeholder=" " />
+            <label for="fKind">Short subtitle</label>
+          </div>
+          <div class="field">
+            <input type="number" id="fPrice" placeholder=" " min="0" step="0.5" required />
+            <label for="fPrice">Base price ($)</label>
+          </div>
+          <div class="field">
+            <input type="number" id="fStock" placeholder=" " min="0" step="1" />
+            <label for="fStock">Stock</label>
+          </div>
+          <div class="editor__select">
+            <span class="filterbar__label">Size</span>
+            <select id="fSize" class="filterbar__select">
+              <option>Small</option><option>Medium</option><option>Large</option>
+            </select>
+          </div>
+          <div class="editor__select">
+            <span class="filterbar__label">Shape</span>
+            <select id="fShape" class="filterbar__select">
+              <option>Jar</option><option>Globe</option><option>Cylinder</option><option>Geometric</option>
+            </select>
+          </div>
+          <div class="editor__select">
+            <span class="filterbar__label">Image</span>
+            <select id="fImg" class="filterbar__select">
+              <option value="assets/products/p1.webp">Bottle (p1)</option>
+              <option value="assets/products/p2.webp">Sphere (p2)</option>
+              <option value="assets/products/p3.webp">Cube (p3)</option>
+              <option value="assets/products/p4.webp">Column (p4)</option>
+              <option value="assets/products/p5.webp">Open glass (p5)</option>
+            </select>
+          </div>
+          <div class="field">
+            <input type="text" id="fBadge" placeholder=" " />
+            <label for="fBadge">Badge (optional — e.g. Bestseller)</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <textarea id="fDesc" placeholder=" " rows="3"></textarea>
+          <label for="fDesc">Description</label>
+        </div>
+
+        <!-- customization settings -->
+        <fieldset class="opt editor__custom">
+          <legend class="opt__legend">Customization settings</legend>
+          <label class="editor__toggle">
+            <input type="checkbox" id="fCustomizable" />
+            <span>This terrarium can be customized with plants &amp; figurines</span>
+          </label>
+
+          <div id="customPanel">
+            <p class="editor__sub">Available plant mixes</p>
+            <div class="editor__plants" id="fPlants"></div>
+
+            <p class="editor__sub">Mini-figurines &amp; price add-ons</p>
+            <div class="editor__figs" id="fFigs"></div>
+            <button type="button" class="chip" id="addFigBtn">+ Add figurine</button>
+          </div>
+        </fieldset>
+
+        <div class="editor__actions">
+          <button class="btn btn--buy" type="submit">Save product</button>
+          <button class="btn btn--primary" type="button" id="cancelBtn">Cancel</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

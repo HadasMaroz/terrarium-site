@@ -443,22 +443,7 @@ if (!prefersReduced) {
   gsap.set(".card", { opacity: 1, y: 0 });
 }
 
-/* ---------- Cart (persisted across pages via localStorage) ---------- */
-const CART_KEY = "terraru-cart-count";
-const cartCount = document.getElementById("cartCount");
-const toast = document.getElementById("toast");
-let toastTimer;
-
-function cartGet() {
-  return parseInt(localStorage.getItem(CART_KEY) || "0", 10) || 0;
-}
-function cartSet(n) {
-  localStorage.setItem(CART_KEY, String(n));
-  cartCount.textContent = n;
-  cartCount.classList.toggle("is-visible", n > 0);
-}
-cartSet(cartGet());
-
+/* ---------- Cart interactions (state lives in js/cart.js) ---------- */
 grid.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-add]");
   if (btn) {
@@ -466,13 +451,7 @@ grid.addEventListener("click", (e) => {
     const product = PRODUCTS.find((p) => p.id === btn.dataset.add);
     btn.classList.add("is-added");
     setTimeout(() => btn.classList.remove("is-added"), 1400);
-    cartSet(cartGet() + 1);
-    gsap.fromTo(cartCount, { scale: 1.5 }, { scale: 1, duration: 0.4, ease: "back.out(3)" });
-
-    toast.textContent = `${product.name} added to cart`;
-    toast.classList.add("is-visible");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2200);
+    Cart.add({ productId: product.id, name: product.name, img: product.img, base: product.price });
     return;
   }
   const card = e.target.closest(".card--link");

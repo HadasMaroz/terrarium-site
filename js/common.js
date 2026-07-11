@@ -21,26 +21,6 @@ if (!prefersReduced) {
   gsap.fromTo("#header", { y: -24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8, ease: "power2.out", delay: 0.1 });
 }
 
-/* cart — persisted across pages */
-const CART_KEY = "terraru-cart-count";
-const cartCountEl = document.getElementById("cartCount");
-
-function cartGet() {
-  return parseInt(localStorage.getItem(CART_KEY) || "0", 10) || 0;
-}
-function cartSet(n) {
-  localStorage.setItem(CART_KEY, String(n));
-  if (!cartCountEl) return;
-  cartCountEl.textContent = n;
-  cartCountEl.classList.toggle("is-visible", n > 0);
-}
-function cartAdd(label) {
-  cartSet(cartGet() + 1);
-  if (cartCountEl) gsap.fromTo(cartCountEl, { scale: 1.5 }, { scale: 1, duration: 0.4, ease: "back.out(3)" });
-  showToast(label);
-}
-cartSet(cartGet());
-
 /* toast */
 let toastTimer;
 function showToast(msg) {
