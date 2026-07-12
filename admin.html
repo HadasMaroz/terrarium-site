@@ -90,19 +90,40 @@
               <option>Jar</option><option>Globe</option><option>Cylinder</option><option>Geometric</option>
             </select>
           </div>
-          <div class="editor__select">
-            <span class="filterbar__label">Image</span>
-            <select id="fImg" class="filterbar__select">
-              <option value="assets/products/p1.webp">Bottle (p1)</option>
-              <option value="assets/products/p2.webp">Sphere (p2)</option>
-              <option value="assets/products/p3.webp">Cube (p3)</option>
-              <option value="assets/products/p4.webp">Column (p4)</option>
-              <option value="assets/products/p5.webp">Open glass (p5)</option>
-            </select>
-          </div>
           <div class="field">
             <input type="text" id="fBadge" placeholder=" " />
             <label for="fBadge">Badge (optional — e.g. Bestseller)</label>
+          </div>
+        </div>
+
+        <!-- product image -->
+        <div class="editor__media">
+          <div class="editor__preview">
+            <img id="imgPreview" src="assets/products/p1.webp" alt="Product image preview" />
+          </div>
+          <div class="editor__mediactrl">
+            <p class="editor__sub" style="margin-top:0">Product image</p>
+            <label class="btn btn--buy editor__upload" for="fImgFile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" width="16" height="16"><path d="M12 16V4M7.5 8.5 12 4l4.5 4.5M5 20h14"/></svg>
+              Upload image
+            </label>
+            <input type="file" id="fImgFile" accept="image/*" hidden />
+            <div class="editor__select">
+              <span class="filterbar__label">Gallery</span>
+              <select id="fImg" class="filterbar__select">
+                <option value="assets/products/p1.webp">Bottle (p1)</option>
+                <option value="assets/products/p2.webp">Sphere (p2)</option>
+                <option value="assets/products/p3.webp">Cube (p3)</option>
+                <option value="assets/products/p4.webp">Column (p4)</option>
+                <option value="assets/products/p5.webp">Open glass (p5)</option>
+                <option value="__custom__" hidden>Custom image</option>
+              </select>
+            </div>
+            <div class="field">
+              <input type="url" id="fImgUrl" placeholder=" " />
+              <label for="fImgUrl">…or paste an image URL</label>
+            </div>
+            <p class="editor__hint">Uploads are cropped to 4:5, compressed, and stored in this browser.</p>
           </div>
         </div>
 

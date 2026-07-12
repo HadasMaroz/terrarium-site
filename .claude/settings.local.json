@@ -52,7 +52,8 @@
       "Bash(git commit -m 'Remove seed-quote bridge; hero flows directly into the bloom section *)",
       "Bash(git commit -m 'Add full site pages: shop, product, story, journal, contact *)",
       "Bash(git commit -m 'Enlarge product page headings by 20% *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(git commit -m 'Admin: product image upload, gallery picker and URL input *)"
     ]
   }
 }

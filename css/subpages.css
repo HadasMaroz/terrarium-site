@@ -470,6 +470,24 @@
 .editor__form { display: grid; gap: 22px; }
 .editor__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 26px; }
 .editor__select { display: flex; align-items: center; gap: 12px; }
+.editor__media {
+  display: grid; grid-template-columns: 170px 1fr;
+  gap: 24px; align-items: start;
+  border-top: 1px solid var(--line); padding-top: 22px;
+}
+.editor__preview {
+  aspect-ratio: 4 / 5; border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--line); background: var(--bg);
+}
+.editor__preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.editor__mediactrl { display: grid; gap: 16px; justify-items: start; }
+.editor__upload {
+  display: inline-flex; align-items: center; gap: 9px;
+  width: auto; padding: 11px 26px; cursor: pointer;
+}
+.editor__mediactrl .field { width: 100%; max-width: 420px; }
+.editor__hint { font-size: 0.72rem; color: var(--ink-dim); }
+
 .editor__custom { border-top: 1px solid var(--line); padding-top: 22px; margin: 0; }
 .editor__toggle { display: flex; gap: 10px; align-items: center; font-size: 0.9rem; cursor: pointer; margin-bottom: 20px; }
 .editor__toggle input { accent-color: var(--moss); width: 16px; height: 16px; }
@@ -605,6 +623,8 @@
   .checkout__summary { position: relative; top: 0; order: -1; }
   .editor__grid { grid-template-columns: 1fr; }
   .co-grid, .co-grid--3 { grid-template-columns: 1fr; }
+  .editor__media { grid-template-columns: 1fr; }
+  .editor__preview { max-width: 200px; }
 }
 @media (max-width: 620px) {
   .shop__grid, .journal__grid, .cross__grid { grid-template-columns: 1fr; }

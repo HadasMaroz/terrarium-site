@@ -42,6 +42,72 @@ rowsEl.addEventListener("click", (e) => {
 const F = (id) => document.getElementById(id);
 const customPanel = document.getElementById("customPanel");
 
+/* ---------- product image: upload / gallery / URL ---------- */
+let currentImg = "assets/products/p1.webp";
+const preview = document.getElementById("imgPreview");
+
+function setImage(src, fromGallery) {
+  currentImg = src;
+  preview.src = src;
+  /* keep the gallery select in sync: show "Custom image" for uploads/URLs */
+  F("fImg").value = fromGallery ? src : "__custom__";
+  if (!fromGallery) F("fImg").querySelector('[value="__custom__"]').hidden = false;
+}
+
+preview.addEventListener("error", () => {
+  preview.src = "assets/products/p1.webp";
+  showToast("That image could not be loaded — check the URL");
+});
+
+/* upload: crop to 4:5 cover, downscale to 720x900, compress to a data URL */
+function processImageFile(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const TW = 720, TH = 900;
+      const canvas = document.createElement("canvas");
+      canvas.width = TW; canvas.height = TH;
+      const ctx = canvas.getContext("2d");
+      const scale = Math.max(TW / img.naturalWidth, TH / img.naturalHeight); // cover
+      const dw = img.naturalWidth * scale, dh = img.naturalHeight * scale;
+      ctx.drawImage(img, (TW - dw) / 2, (TH - dh) / 2, dw, dh);
+      /* step quality down until it fits comfortably in localStorage */
+      for (const q of [0.85, 0.72, 0.6, 0.45]) {
+        const data = canvas.toDataURL("image/jpeg", q);
+        if (data.length < 700_000) return resolve(data);
+      }
+      reject(new Error("too-large"));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error("bad-image")); };
+    img.src = url;
+  });
+}
+
+F("fImgFile").addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  e.target.value = "";
+  if (!file) return;
+  if (!file.type.startsWith("image/")) { showToast("Please choose an image file"); return; }
+  try {
+    const data = await processImageFile(file);
+    setImage(data, false);
+    showToast("Image ready — save the product to apply");
+  } catch (err) {
+    showToast(err.message === "too-large" ? "Image is too heavy even after compression" : "Could not read that image");
+  }
+});
+
+F("fImg").addEventListener("change", (e) => {
+  if (e.target.value !== "__custom__") setImage(e.target.value, true);
+});
+
+F("fImgUrl").addEventListener("change", (e) => {
+  const url = e.target.value.trim();
+  if (url) setImage(url, false);
+});
+
 function plantChecks(selected) {
   F("fPlants").innerHTML = PLANTS.map((pl) => `
     <label class="fig ${selected.includes(pl.id) ? "is-checked" : ""}">
@@ -85,7 +151,9 @@ function openEditor(id) {
   F("fStock").value = p ? p.stock ?? 10 : 10;
   F("fSize").value = p ? p.size : "Medium";
   F("fShape").value = p ? p.shape : "Jar";
-  F("fImg").value = p ? p.img : "assets/products/p1.webp";
+  F("fImgUrl").value = "";
+  const img = p ? p.img : "assets/products/p1.webp";
+  setImage(img, img.startsWith("assets/products/"));
   F("fBadge").value = p ? p.badge || "" : "";
   F("fDesc").value = p ? p.desc || "" : "";
   F("fCustomizable").checked = p ? !!p.customizable : true;
@@ -140,7 +208,7 @@ form.addEventListener("submit", (e) => {
     stock: parseInt(F("fStock").value, 10) || 0,
     size: F("fSize").value,
     shape: F("fShape").value,
-    img: F("fImg").value,
+    img: currentImg,
     badge: F("fBadge").value.trim() || null,
     desc: F("fDesc").value.trim(),
     customizable: F("fCustomizable").checked,
@@ -159,7 +227,12 @@ form.addEventListener("submit", (e) => {
     while (list.some((p) => p.id === id)) id += "-2";
     list.push({ id, rating: 5.0, reviews: 0, ...data });
   }
-  saveCatalog(list);
+  try {
+    saveCatalog(list);
+  } catch (err) {
+    showToast("Storage is full — remove an uploaded image or use a URL instead");
+    return;
+  }
   renderTable();
   closeEditor();
   showToast(`${name} saved`);
