@@ -369,7 +369,12 @@
   border-left: 1px solid var(--line);
   display: flex; flex-direction: column;
   transform: translateX(105%);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: -40px 0 80px rgba(0, 0, 0, 0.5);
+}
+.drawer.is-open { transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) {
+  .drawer { transition: none; }
 }
 .drawer__head {
   display: flex; align-items: center; justify-content: space-between;

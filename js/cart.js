@@ -23,7 +23,7 @@ const Cart = (() => {
   const root = document.createElement("div");
   root.innerHTML = `
     <div class="drawer-veil" id="drawerVeil"></div>
-    <aside class="drawer" id="cartDrawer" aria-label="Shopping cart" aria-hidden="true">
+    <aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart" aria-hidden="true">
       <header class="drawer__head">
         <h2>Your cart <span class="drawer__count" id="drawerCount"></span></h2>
         <button class="drawer__close" id="drawerClose" aria-label="Close cart">
@@ -104,34 +104,52 @@ const Cart = (() => {
   }
 
   /* ---------- open / close ---------- */
+  /* the slide is pure CSS (class toggle + transition) so the cart can never
+     be stranded off-screen by a stalled JS animation ticker */
   let isOpen = false;
+  let lastFocus = null;
+
   function open() {
     if (isOpen) return;
     isOpen = true;
+    lastFocus = document.activeElement;
     drawer.setAttribute("aria-hidden", "false");
+    drawer.classList.add("is-open");
     veil.classList.add("is-on");
+    document.documentElement.style.overflow = "hidden"; /* lock background scroll */
     if (!reduced && window.gsap) {
-      gsap.fromTo(drawer, { xPercent: 105 }, { xPercent: 0, duration: 0.55, ease: "power3.out" });
-      gsap.fromTo(".citem", { opacity: 0, x: 26 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, delay: 0.15, ease: "power2.out" });
-    } else {
-      drawer.style.transform = "translateX(0)";
+      /* decorative stagger — deferred one frame so it can only start when rendering is live */
+      requestAnimationFrame(() => {
+        const rows = drawer.querySelectorAll(".citem");
+        if (rows.length && isOpen) gsap.fromTo(rows, { opacity: 0, x: 26 }, { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: "power2.out", clearProps: "all" });
+      });
     }
+    document.getElementById("drawerClose").focus({ preventScroll: true });
   }
+
   function close() {
     if (!isOpen) return;
     isOpen = false;
     drawer.setAttribute("aria-hidden", "true");
+    drawer.classList.remove("is-open");
     veil.classList.remove("is-on");
-    if (!reduced && window.gsap) {
-      gsap.to(drawer, { xPercent: 105, duration: 0.45, ease: "power3.in" });
-    } else {
-      drawer.style.transform = "translateX(105%)";
-    }
+    document.documentElement.style.overflow = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
 
   veil.addEventListener("click", close);
   document.getElementById("drawerClose").addEventListener("click", close);
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { close(); return; }
+    /* light focus trap: keep Tab inside the open drawer */
+    if (e.key === "Tab" && isOpen) {
+      const focusables = drawer.querySelectorAll("button, a[href], input, [tabindex]");
+      if (!focusables.length) return;
+      const first = focusables[0], last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+    }
+  });
   const cartBtn = document.getElementById("cartBtn");
   if (cartBtn) cartBtn.addEventListener("click", open);
 

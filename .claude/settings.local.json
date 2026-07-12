@@ -53,7 +53,8 @@
       "Bash(git commit -m 'Add full site pages: shop, product, story, journal, contact *)",
       "Bash(git commit -m 'Enlarge product page headings by 20% *)",
       "Bash(npm install *)",
-      "Bash(git commit -m 'Admin: product image upload, gallery picker and URL input *)"
+      "Bash(git commit -m 'Admin: product image upload, gallery picker and URL input *)",
+      "Bash(curl -s -o /dev/null -w \"admin live: %{http_code}\\\\n\" \"https://hadasmaroz.github.io/terrarium-site/admin.html\")"
     ]
   }
 }
