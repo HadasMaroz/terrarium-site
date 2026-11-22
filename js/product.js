@@ -5,22 +5,26 @@ const product = findProduct(new URLSearchParams(location.search).get("id"));
 const plantOptions = (product.plants || []).map((id) => PLANTS.find((p) => p.id === id)).filter(Boolean);
 const figOptions = product.figs || [];
 
+const TP = IS_HE
+  ? { included: "כלול במחיר", reviews: "ביקורות", rated: (r) => `דירוג ${r} מתוך 5` }
+  : { included: "included", reviews: "reviews", rated: (r) => `Rated ${r} out of 5` };
+
 const sel = { plant: plantOptions[0] || null, figs: new Set() };
 
 /* fill static info */
-document.title = `${product.name} — Terrar U`;
-document.getElementById("crumbName").textContent = product.name;
+document.title = `${trName(product)} — Terrar U`;
+document.getElementById("crumbName").textContent = trName(product);
 document.getElementById("pImg").src = product.img;
-document.getElementById("pImg").alt = `${product.name} — glass terrarium`;
-document.getElementById("pKind").textContent = product.kind;
-document.getElementById("pName").textContent = product.name;
-document.getElementById("pDesc").textContent = product.desc;
-document.getElementById("pReviews").textContent = `${product.rating} · ${product.reviews} reviews`;
+document.getElementById("pImg").alt = trName(product);
+document.getElementById("pKind").textContent = pkind(product);
+document.getElementById("pName").textContent = trName(product);
+document.getElementById("pDesc").textContent = pdesc(product);
+document.getElementById("pReviews").textContent = `${product.rating} · ${product.reviews} ${TP.reviews}`;
 document.getElementById("pCustomTag").hidden = !product.customizable;
 
 /* stars */
 const starsEl = document.getElementById("pStars");
-starsEl.setAttribute("aria-label", `Rated ${product.rating} out of 5`);
+starsEl.setAttribute("aria-label", TP.rated(product.rating));
 starsEl.innerHTML = Array.from({ length: 5 }, (_, i) => {
   const fill = Math.max(0, Math.min(1, product.rating - i));
   return `<span class="star"><span class="star__fill" style="width:${fill * 100}%">★</span>★</span>`;
@@ -38,8 +42,8 @@ if (showPlants) {
     <label class="swatch">
       <input type="radio" name="plant" value="${pl.id}" ${i === 0 ? "checked" : ""} />
       <span class="swatch__dot" style="background:${pl.tone}"></span>
-      <span class="swatch__name">${pl.name}</span>
-      <span class="swatch__price">${pl.price ? "+" + money(pl.price) : "included"}</span>
+      <span class="swatch__name">${trName(pl)}</span>
+      <span class="swatch__price">${pl.price ? "+" + money(pl.price) : TP.included}</span>
     </label>`
   ).join("");
   plantOpt.addEventListener("change", (e) => {
@@ -53,7 +57,7 @@ if (showFigs) {
     (f) => `
     <label class="fig">
       <input type="checkbox" value="${f.id}" />
-      <span class="fig__name">${f.name}</span>
+      <span class="fig__name">${trName(f)}</span>
       <span class="fig__price">+${money(f.price)}</span>
     </label>`
   ).join("");
@@ -84,11 +88,11 @@ totalEl.textContent = money(product.price);
 document.getElementById("addBtn").addEventListener("click", () => {
   Cart.add({
     productId: product.id,
-    name: product.name,
+    name: trName(product),
     img: product.img,
     base: product.price,
-    plant: showPlants && sel.plant ? { id: sel.plant.id, name: sel.plant.name, price: sel.plant.price } : null,
-    figs: [...sel.figs].map((f) => ({ id: f.id, name: f.name, price: f.price })),
+    plant: showPlants && sel.plant ? { id: sel.plant.id, name: trName(sel.plant), price: sel.plant.price } : null,
+    figs: [...sel.figs].map((f) => ({ id: f.id, name: trName(f), price: f.price })),
   });
 });
 
@@ -96,9 +100,9 @@ document.getElementById("addBtn").addEventListener("click", () => {
 document.querySelectorAll("[data-cross]").forEach((btn) =>
   btn.addEventListener("click", () => {
     Cart.add({
-      productId: "extra-" + btn.dataset.cross.toLowerCase().replace(/\s+/g, "-"),
+      productId: "extra-" + (btn.dataset.id || btn.dataset.cross.toLowerCase().replace(/\s+/g, "-")),
       name: btn.dataset.cross,
-      img: null,
+      img: btn.dataset.img || null,
       base: Number(btn.dataset.price || 0),
     });
   })

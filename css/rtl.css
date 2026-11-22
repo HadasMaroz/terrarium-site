@@ -1,0 +1,124 @@
+/* ==================================================
+   TERRAR U — Hebrew / RTL overrides
+   Loaded only by the pages under /he/. Mirrors every physical
+   left/right rule in style.css + subpages.css and tunes type for Hebrew.
+   ================================================== */
+
+html[lang="he"] {
+  --font-body: "Assistant", "Inter", sans-serif;
+}
+html[lang="he"] body { font-weight: 400; line-height: 1.7; }
+
+/* wide Latin-style tracking breaks Hebrew letterforms — tighten everywhere
+   except the brand wordmark, which stays Latin */
+html[lang="he"] .hero__eyebrow,
+html[lang="he"] .section-eyebrow,
+html[lang="he"] .btn,
+html[lang="he"] .header__nav a,
+html[lang="he"] .chip,
+html[lang="he"] .filterbar__label,
+html[lang="he"] .card__tag,
+html[lang="he"] .card__badge,
+html[lang="he"] .card__cta,
+html[lang="he"] .pill,
+html[lang="he"] .post__more,
+html[lang="he"] .hero__scrollhint,
+html[lang="he"] .product__crumbs,
+html[lang="he"] .opt__hint,
+html[lang="he"] .product__total,
+html[lang="he"] .summary__total dt,
+html[lang="he"] .drawer__subtotal,
+html[lang="he"] .shop__count,
+html[lang="he"] .cross__add,
+html[lang="he"] .editor__sub,
+html[lang="he"] .loader__pct {
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+html[lang="he"] .craft__num,
+html[lang="he"] .opt__step { letter-spacing: 0.2em; }
+html[lang="he"] .hero__title,
+html[lang="he"] .hero__caption,
+html[lang="he"] .section-title,
+html[lang="he"] .product__name,
+html[lang="he"] .craft__title,
+html[lang="he"] .bloom__quote { letter-spacing: 0; }
+html[lang="he"] .hero__title { line-height: 1.08; }
+html[lang="he"] .section-title { line-height: 1.18; }
+
+/* ---------- header ---------- */
+html[lang="he"] .header__nav {
+  margin-left: clamp(22px, 3vw, 44px);
+  margin-right: auto;
+}
+html[lang="he"] .header__cart-count { right: auto; left: -9px; }
+html[lang="he"] .lang-switch { margin-right: 0; margin-left: 18px; }
+
+/* ---------- hero ---------- */
+html[lang="he"] .hero__stage--1 { text-align: right; }
+
+/* ---------- bloom quote: reads right-to-left, first half top-right ---------- */
+html[lang="he"] .bloom__quote--left {
+  left: auto; right: clamp(24px, 7vw, 110px);
+  text-align: right;
+}
+html[lang="he"] .bloom__quote--right {
+  right: auto; left: clamp(24px, 7vw, 110px);
+  text-align: left;
+}
+
+/* ---------- cards ---------- */
+html[lang="he"] .card__badge { left: auto; right: 14px; }
+html[lang="he"] .card__cart { right: auto; left: 14px; }
+html[lang="he"] .card__tag { text-align: right; }
+
+/* ---------- about stage (inside the craft sequence) ---------- */
+html[lang="he"] .craft__stage--about { text-align: right; }
+
+/* ---------- floating labels / inputs ---------- */
+html[lang="he"] .field label { left: auto; right: 2px; }
+html[lang="he"] .field__lock { right: auto; left: 4px; }
+html[lang="he"] .field input[type="email"],
+html[lang="he"] .field input[inputmode="numeric"] { direction: ltr; text-align: right; }
+
+/* ---------- filter bar ---------- */
+html[lang="he"] .filterbar__group--sort { margin-left: 0; margin-right: auto; }
+html[lang="he"] .filterbar__label { margin-right: 0; margin-left: 4px; }
+
+/* ---------- product page ---------- */
+html[lang="he"] .swatch { padding: 10px 12px 10px 18px; }
+html[lang="he"] .fig__name::before { margin-right: 0; margin-left: 9px; }
+html[lang="he"] .opt__legend { flex-direction: row; }
+
+/* ---------- cart drawer: slides in from the left (the cart icon side) ---------- */
+html[lang="he"] .drawer {
+  right: auto; left: 0;
+  border-left: 0; border-right: 1px solid var(--line);
+  transform: translateX(-105%);
+  box-shadow: 40px 0 80px rgba(0, 0, 0, 0.5);
+}
+html[lang="he"] .drawer.is-open { transform: translateX(0); }
+html[lang="he"] .citem__remove { right: auto; left: 0; }
+html[lang="he"] .drawer__close:hover { transform: rotate(-90deg); }
+
+/* ---------- checkout ---------- */
+html[lang="he"] .sumitem__qty { right: auto; left: -1px; border-radius: 9px 0 10px 0; }
+html[lang="he"] .summary__rows dd { text-align: left; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 620px) {
+  html[lang="he"] .bloom__quote--left { right: 6vw; }
+  html[lang="he"] .bloom__quote--right { left: 6vw; }
+  html[lang="he"] .hero__stage--1 { text-align: center; }
+  html[lang="he"] .header .lang-switch { margin-left: 18px; margin-right: auto; }
+}
+
+/* the sealed-vessel craft numbers and prices stay left-to-right glyph runs */
+html[lang="he"] .card__price,
+html[lang="he"] .product__total-price,
+html[lang="he"] .citem__price,
+html[lang="he"] .sumitem__price,
+html[lang="he"] #drawerSubtotal,
+html[lang="he"] #sumTotal,
+html[lang="he"] #sumSubtotal,
+html[lang="he"] #placeTotal { unicode-bidi: plaintext; }

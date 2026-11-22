@@ -623,6 +623,19 @@
 .checkout__success p { color: var(--ink-dim); }
 .checkout__success strong { color: var(--moss); }
 
+/* ---------- language switch (EN ⇄ עב) ---------- */
+.lang-switch {
+  margin-right: 18px;
+  padding: 5px 13px; border-radius: 100px;
+  border: 1px solid var(--line);
+  font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink-dim);
+  transition: color 0.3s, border-color 0.3s;
+}
+.lang-switch:hover { color: var(--moss); border-color: rgba(143, 191, 127, 0.5); }
+@media (max-width: 620px) {
+  .header .lang-switch { margin-left: auto; }
+}
+
 /* ---------- subpage responsive ---------- */
 @media (max-width: 1080px) {
   .shop__grid, .journal__grid, .cross__grid { grid-template-columns: repeat(2, 1fr); }

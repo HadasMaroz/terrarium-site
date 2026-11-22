@@ -343,10 +343,10 @@ if (!prefersReduced) {
     if (stage.classList.contains("craft__stage--about")) {
       /* about: text and portrait drift in from opposite sides of the mist */
       craftTl.fromTo(stage.querySelector(".about__text"),
-        { autoAlpha: 0, x: -56, filter: "blur(9px)" },
+        { autoAlpha: 0, x: IS_HE ? 56 : -56, filter: "blur(9px)" },
         { autoAlpha: 1, x: 0, filter: "blur(0px)", duration: inDur, ease: "power2.out" }, enter);
       craftTl.fromTo(stage.querySelector(".about__media"),
-        { autoAlpha: 0, x: 56, scale: 0.92, filter: "blur(9px)" },
+        { autoAlpha: 0, x: IS_HE ? -56 : 56, scale: 0.92, filter: "blur(9px)" },
         { autoAlpha: 1, x: 0, scale: 1, filter: "blur(0px)", duration: inDur, ease: "power2.out" }, enter + inDur * 0.25);
     } else {
       const chars = stage.querySelectorAll(".ch");
@@ -379,20 +379,20 @@ if (!prefersReduced) {
 }
 
 /* ---------- Products ---------- */
-const PRODUCTS = [
-  { id: "bottled-grove", name: "The Bottled Grove", kind: "Corked bottle ecosystem", price: 259, img: "assets/products/p1.webp", badge: "Limited" },
-  { id: "bloom-orb", name: "Bloom Orb", kind: "Wildflower meadow sphere", price: 289, img: "assets/products/p2.webp", badge: "Bestseller" },
-  { id: "terra-cube", name: "Terra Cube", kind: "Square glass forest", price: 229, img: "assets/products/p3.webp", badge: "New" },
-];
+/* the three featured pieces come from the shared (admin-editable) catalog;
+   a product the admin deleted simply drops out of the homepage showcase */
+const FEATURED_IDS = ["bottled-grove", "bloom-orb", "terra-cube"];
+let PRODUCTS = CATALOG.filter((p) => FEATURED_IDS.includes(p.id));
+if (!PRODUCTS.length) PRODUCTS = CATALOG.slice(0, 3);
 
 const grid = document.getElementById("productGrid");
 grid.innerHTML = PRODUCTS.map(
   (p) => `
-  <article class="card card--link" data-id="${p.id}" tabindex="0" role="link" aria-label="${p.name}, $${p.price}">
+  <article class="card card--link" data-id="${p.id}" tabindex="0" role="link" aria-label="${trName(p)}, $${p.price}">
     <div class="card__media">
-      <img src="${p.img}" alt="${p.name} — glass terrarium" />
+      <img src="${p.img}" alt="${trName(p)}" />
       <span class="card__shine" aria-hidden="true"></span>
-      ${p.badge ? `<span class="card__badge">${p.badge}</span>` : ""}
+      ${p.badge ? `<span class="card__badge">${tbadge(p.badge)}</span>` : ""}
       <button class="card__cart" type="button" data-add="${p.id}" aria-label="Add ${p.name} to cart">
         <svg class="card__cart-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="22" height="22"><path d="M12 5v14M5 12h14"/></svg>
         <svg class="card__cart-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
@@ -400,8 +400,8 @@ grid.innerHTML = PRODUCTS.map(
     </div>
     <div class="card__body">
       <div>
-        <h3 class="card__name">${p.name}</h3>
-        <p class="card__kind">${p.kind}</p>
+        <h3 class="card__name">${trName(p)}</h3>
+        <p class="card__kind">${pkind(findProduct(p.id))}</p>
       </div>
       <span class="card__price">$${p.price}</span>
     </div>
@@ -451,14 +451,14 @@ grid.addEventListener("click", (e) => {
     const product = PRODUCTS.find((p) => p.id === btn.dataset.add);
     btn.classList.add("is-added");
     setTimeout(() => btn.classList.remove("is-added"), 1400);
-    Cart.add({ productId: product.id, name: product.name, img: product.img, base: product.price });
+    Cart.add({ productId: product.id, name: trName(product), img: product.img, base: product.price });
     return;
   }
   const card = e.target.closest(".card--link");
-  if (card) window.location.href = `product.html?id=${card.dataset.id}`;
+  if (card) window.location.href = `${PAGE_PREFIX}product.html?id=${card.dataset.id}`;
 });
 grid.addEventListener("keydown", (e) => {
   if (e.key !== "Enter") return;
   const card = e.target.closest(".card--link");
-  if (card) window.location.href = `product.html?id=${card.dataset.id}`;
+  if (card) window.location.href = `${PAGE_PREFIX}product.html?id=${card.dataset.id}`;
 });

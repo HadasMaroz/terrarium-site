@@ -8,6 +8,10 @@ const layout = document.getElementById("coLayout");
 const emptyEl = document.getElementById("coEmpty");
 const successEl = document.getElementById("coSuccess");
 
+const TC = IS_HE
+  ? { free: "חינם", plant: "צמח", figs: "דמויות", fix: "בדקו בבקשה את השדות המסומנים", paypal: "גרסת דמו — ההפניה ל-PayPal כבויה כאן" }
+  : { free: "Free", plant: "Plant", figs: "Figurines", fix: "Please check the highlighted fields", paypal: "Demo build — PayPal redirect is disabled here" };
+
 /* ---------- totals ---------- */
 function shippingCost() {
   if (shipMethod === "standard" && Cart.subtotal() >= FREE_SHIP_OVER) return 0;
@@ -26,8 +30,8 @@ function renderSummary() {
 
   document.getElementById("sumItems").innerHTML = Cart.items.map((it) => {
     const bits = [];
-    if (it.plant) bits.push(`Plant: ${it.plant.name}`);
-    if (it.figs && it.figs.length) bits.push(`Figurines: ${it.figs.map((f) => f.name).join(", ")}`);
+    if (it.plant) bits.push(`${TC.plant}: ${it.plant.name}`);
+    if (it.figs && it.figs.length) bits.push(`${TC.figs}: ${it.figs.map((f) => f.name).join(", ")}`);
     return `
     <article class="sumitem">
       <div class="sumitem__img">${it.img ? `<img src="${it.img}" alt="" />` : ""}<span class="sumitem__qty">${it.qty}</span></div>
@@ -40,9 +44,9 @@ function renderSummary() {
   }).join("");
 
   const free = shipMethod === "standard" && Cart.subtotal() >= FREE_SHIP_OVER;
-  document.getElementById("stdPrice").textContent = Cart.subtotal() >= FREE_SHIP_OVER ? "Free" : money(SHIP.standard);
+  document.getElementById("stdPrice").textContent = Cart.subtotal() >= FREE_SHIP_OVER ? TC.free : money(SHIP.standard);
   document.getElementById("sumSubtotal").textContent = money(Cart.subtotal());
-  document.getElementById("sumShipping").textContent = free || shippingCost() === 0 ? "Free" : money(shippingCost());
+  document.getElementById("sumShipping").textContent = free || shippingCost() === 0 ? TC.free : money(shippingCost());
   const totalEl = document.getElementById("sumTotal");
   totalEl.textContent = money(grandTotal());
   document.getElementById("placeTotal").textContent = money(grandTotal());
@@ -69,7 +73,7 @@ document.querySelectorAll(".pay-tab").forEach((tab) =>
   })
 );
 document.getElementById("paypalBtn").addEventListener("click", () =>
-  showToast("Demo build — PayPal redirect is disabled here")
+  showToast(TC.paypal)
 );
 
 /* ---------- input formatting ---------- */
@@ -104,7 +108,9 @@ function validate() {
     ok = markInvalid(ccNum, ccNum.value.replace(/\s/g, "").length !== 16) && ok;
     ok = markInvalid(document.getElementById("ccName"), !document.getElementById("ccName").value.trim()) && ok;
     const m = ccExp.value.match(/^(\d{2})\/(\d{2})$/);
-    const expOk = m && Number(m[1]) >= 1 && Number(m[1]) <= 12 && (Number(m[2]) > 26 || (Number(m[2]) === 26 && Number(m[1]) >= 7));
+    const now = new Date(), yy = now.getFullYear() % 100, mm = now.getMonth() + 1;
+    const expOk = m && Number(m[1]) >= 1 && Number(m[1]) <= 12 &&
+      (Number(m[2]) > yy || (Number(m[2]) === yy && Number(m[1]) >= mm));
     ok = markInvalid(ccExp, !expOk) && ok;
     ok = markInvalid(ccCvc, ccCvc.value.length < 3) && ok;
   }
@@ -116,7 +122,7 @@ document.getElementById("coForm").addEventListener("submit", (e) => {
   e.preventDefault();
   if (!Cart.items.length) return;
   if (!validate()) {
-    showToast("Please check the highlighted fields");
+    showToast(TC.fix);
     const firstErr = document.querySelector(".field--error input");
     if (firstErr) firstErr.focus();
     return;

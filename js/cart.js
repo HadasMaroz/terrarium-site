@@ -11,6 +11,16 @@ const Cart = (() => {
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* UI strings per page language (IS_HE / PAGE_PREFIX come from catalog.js) */
+  const T = (typeof IS_HE !== "undefined" && IS_HE)
+    ? { cart: "העגלה שלך", close: "סגירת עגלה", empty: "העגלה שלך ריקה.", explore: "לצפייה בקולקציה",
+        subtotal: 'סה"כ ביניים', note: "משלוח מחושב בקופה · חינם מעל $200", checkout: "לתשלום",
+        plant: "צמח", figs: "דמויות", inc: "הגדלת כמות", dec: "הקטנת כמות", remove: "הסרת" }
+    : { cart: "Your cart", close: "Close cart", empty: "Your cart is empty.", explore: "Explore the collection",
+        subtotal: "Subtotal", note: "Shipping calculated at checkout · Free over $200", checkout: "Checkout",
+        plant: "Plant", figs: "Figurines", inc: "Increase quantity", dec: "Decrease quantity", remove: "Remove" };
+  const PREFIX = typeof PAGE_PREFIX !== "undefined" ? PAGE_PREFIX : "";
+
   /* ---------- math ---------- */
   const unitPrice = (it) =>
     it.base + (it.plant ? it.plant.price : 0) + (it.figs || []).reduce((s, f) => s + f.price, 0);
@@ -25,16 +35,16 @@ const Cart = (() => {
     <div class="drawer-veil" id="drawerVeil"></div>
     <aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Shopping cart" aria-hidden="true">
       <header class="drawer__head">
-        <h2>Your cart <span class="drawer__count" id="drawerCount"></span></h2>
-        <button class="drawer__close" id="drawerClose" aria-label="Close cart">
+        <h2>${T.cart} <span class="drawer__count" id="drawerCount"></span></h2>
+        <button class="drawer__close" id="drawerClose" aria-label="${T.close}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="22" height="22"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </header>
       <div class="drawer__items" id="drawerItems"></div>
       <footer class="drawer__foot" id="drawerFoot">
-        <div class="drawer__subtotal"><span>Subtotal</span><span id="drawerSubtotal"></span></div>
-        <p class="drawer__note">Shipping calculated at checkout · Free over $200</p>
-        <a class="btn btn--buy drawer__checkout" href="checkout.html">Checkout</a>
+        <div class="drawer__subtotal"><span>${T.subtotal}</span><span id="drawerSubtotal"></span></div>
+        <p class="drawer__note">${T.note}</p>
+        <a class="btn btn--buy drawer__checkout" href="${PREFIX}checkout.html">${T.checkout}</a>
       </footer>
     </aside>`;
   document.body.appendChild(root);
@@ -47,8 +57,8 @@ const Cart = (() => {
   /* ---------- rendering ---------- */
   function configLine(it) {
     const bits = [];
-    if (it.plant) bits.push(`Plant: ${it.plant.name}`);
-    if (it.figs && it.figs.length) bits.push(`Figurines: ${it.figs.map((f) => f.name).join(", ")}`);
+    if (it.plant) bits.push(`${T.plant}: ${it.plant.name}`);
+    if (it.figs && it.figs.length) bits.push(`${T.figs}: ${it.figs.map((f) => f.name).join(", ")}`);
     return bits.join(" · ");
   }
 
@@ -61,8 +71,8 @@ const Cart = (() => {
       itemsEl.innerHTML = `
         <div class="drawer__empty">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" width="44" height="44"><path d="M6 7h12l-1.2 12.2a1.5 1.5 0 0 1-1.5 1.3H8.7a1.5 1.5 0 0 1-1.5-1.3L6 7Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
-          <p>Your cart is empty.</p>
-          <a class="btn btn--primary" href="shop.html">Explore the collection</a>
+          <p>${T.empty}</p>
+          <a class="btn btn--primary" href="${PREFIX}shop.html">${T.explore}</a>
         </div>`;
       return;
     }
@@ -77,14 +87,14 @@ const Cart = (() => {
           ${configLine(it) ? `<p class="citem__config">${configLine(it)}</p>` : ""}
           <div class="citem__row">
             <div class="stepper">
-              <button data-step="-1" aria-label="Decrease quantity">&minus;</button>
+              <button data-step="-1" aria-label="${T.dec}">&minus;</button>
               <span>${it.qty}</span>
-              <button data-step="1" aria-label="Increase quantity">+</button>
+              <button data-step="1" aria-label="${T.inc}">+</button>
             </div>
             <span class="citem__price">${money(unitPrice(it) * it.qty)}</span>
           </div>
         </div>
-        <button class="citem__remove" data-remove aria-label="Remove ${it.name}">
+        <button class="citem__remove" data-remove aria-label="${T.remove} ${it.name}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M6 6l12 12M18 6 6 18"/></svg>
         </button>
       </article>`).join("");

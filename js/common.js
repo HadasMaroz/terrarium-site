@@ -21,6 +21,15 @@ if (!prefersReduced) {
   gsap.fromTo("#header", { y: -24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8, ease: "power2.out", delay: 0.1 });
 }
 
+/* language switch: link each page to its twin in the other language,
+   keeping the query string (product id) and hash */
+document.querySelectorAll("[data-langswitch]").forEach((a) => {
+  const inHebrew = document.documentElement.lang === "he";
+  const file = location.pathname.split("/").pop() || "index.html";
+  /* he pages carry <base href="../">, so a bare filename resolves to the English twin */
+  a.setAttribute("href", (inHebrew ? "" : "he/") + file + location.search + location.hash);
+});
+
 /* toast */
 let toastTimer;
 function showToast(msg) {
