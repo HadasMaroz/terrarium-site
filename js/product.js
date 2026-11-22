@@ -12,7 +12,7 @@ const TP = IS_HE
 const sel = { plant: plantOptions[0] || null, figs: new Set() };
 
 /* fill static info */
-document.title = `${trName(product)} — Terrar U`;
+document.title = `${trName(product)} ${IS_HE ? "|" : "—"} Terrar U`;
 document.getElementById("crumbName").textContent = trName(product);
 document.getElementById("pImg").src = product.img;
 document.getElementById("pImg").alt = trName(product);

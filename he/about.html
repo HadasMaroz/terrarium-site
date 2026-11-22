@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="../" />
-  <title>הסיפור שלנו — Terrar U</title>
-  <meta name="description" content="המקור, הפילוסופיה והיוצר שמאחורי האקוסיסטמות החיות והאטומות של Terrar U." />
+  <title>הסיפור שלנו | Terrar U</title>
+  <meta name="description" content="איך הכול התחיל, במה אנחנו מאמינים ומי היוצר שמאחורי הטרריומים של Terrar U." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate" hreflang="en" href="about.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/subpages.css" />
   <link rel="stylesheet" href="css/rtl.css" />
@@ -27,7 +27,7 @@
 
   <header class="header" id="header">
     <a class="header__logo" href="he/index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="he/shop.html">חנות</a>
       <a href="he/about.html" class="is-current">הסיפור שלנו</a>
       <a href="he/blog.html">יומן</a>
@@ -41,6 +41,7 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <main>
@@ -50,35 +51,35 @@
     </section>
 
     <div class="story">
-      <!-- המקור -->
+      <!-- איך הכול התחיל -->
       <section class="story__block">
         <div class="story__text" data-reveal>
-          <p class="section-eyebrow">המקור</p>
-          <h2>הכול התחיל בצנצנת אחת שסירבה למות.</h2>
-          <p>לפני שנים הוטמן חופן טחב מטיול משפחתי בצנצנת חמוצים ישנה, כניסוי. בלי השקיה, בלי לפתוח — רק אור. חלפו חודשים, ובתוך הזכוכית ירד גשם, צמח, נרקב וצמח שוב. העולם הקטן והעקשן ההוא מעולם לא הפסיק לחיות.</p>
-          <p>Terrar U צמח מתוך הצנצנת הזאת: אובססיה להביא טבע אמיתי ופועל אל תוך הבית — לא כקישוט, אלא כחבר חי שלא מבקש דבר ומחזיר שקט.</p>
+          <p class="section-eyebrow">איך הכול התחיל</p>
+          <h2>הכול התחיל מצנצנת אחת שלא רצתה למות.</h2>
+          <p>לפני כמה שנים לקחנו חופן טחב מטיול משפחתי וסגרנו אותו בצנצנת חמוצים ישנה, סתם בתור ניסוי. בלי להשקות ובלי לפתוח, רק אור. עברו חודשים, ובתוך הזכוכית ירד גשם, דברים צמחו, התפרקו וצמחו מחדש. העולם הקטן והעקשן הזה פשוט לא הפסיק לחיות.</p>
+          <p>Terrar U נולד מהצנצנת הזאת. רצינו להכניס הביתה טבע אמיתי שעובד בעצמו. לא קישוט, אלא כמו חבר חי שלא מבקש כלום ומחזיר המון שקט.</p>
         </div>
         <div class="story__img" data-reveal>
-          <img src="assets/seq3-lg/f_0075.webp" alt="נוף יער ערפילי אטום בתוך צנצנת זכוכית" loading="lazy" />
+          <img src="assets/seq3-lg/f_0075.webp" alt="נוף יער ערפילי סגור בתוך צנצנת זכוכית" loading="lazy" />
         </div>
       </section>
 
-      <!-- פילוסופיה -->
+      <!-- במה אנחנו מאמינים -->
       <section class="story__principles">
         <div data-reveal>
           <p class="section-eyebrow">01</p>
-          <h3>קיימות</h3>
-          <p>טחב שנאסף באחריות, כלי זכוכית שניצלו מהשלכה, אריזה נטולת פלסטיק. עולם אטום ממחזר הכול — וגם אנחנו.</p>
+          <h3>אחריות לסביבה</h3>
+          <p>אוספים טחב בזהירות, נותנים חיים שניים לכלי זכוכית ישנים ואורזים בלי פלסטיק. עולם סגור ממחזר הכול, וגם אנחנו.</p>
         </div>
         <div data-reveal>
           <p class="section-eyebrow">02</p>
-          <h3>עבודת יד מדוקדקת</h3>
-          <p>כל נוף נבנה בפינצטה, שכבה אחר שכבה: ניקוז, פחם, אדמה, אבן, שורש, טחב. אין שניים זהים.</p>
+          <h3>עבודת יד קפדנית</h3>
+          <p>כל נוף נבנה עם פינצטה, שכבה אחרי שכבה: ניקוז, פחם, אדמה, אבנים, שורשים וטחב. אין שני טרריומים זהים.</p>
         </div>
         <div data-reveal>
           <p class="section-eyebrow">03</p>
           <h3>אמנות הסבלנות</h3>
-          <p>טרריום מלמד איטיות. צמיחה נמדדת בעונות ולא בימים — וזה בדיוק העניין.</p>
+          <p>טרריום מלמד לעשות הכול לאט. מודדים צמיחה בעונות ולא בימים, וזה בדיוק הקסם.</p>
         </div>
       </section>
 
@@ -86,17 +87,17 @@
         <img src="assets/seq4-lg/f_0280.webp" alt="נרקיסים כחולים בפריחה מלאה על רקע שחור" loading="lazy" />
       </div>
 
-      <!-- היוצר -->
+      <!-- שלומי מספר על עצמו -->
       <section class="story__block story__block--flip">
         <div class="story__text" data-reveal>
-          <p class="section-eyebrow">היוצר</p>
+          <p class="section-eyebrow">מי אני</p>
           <h2>היי, אני שלומי!</h2>
-          <p>שלומי מרוז הוא אב מסור לשלושה בנים ויוצר נלהב עם אהבה עמוקה לטבע ולעבודת יד. בין הכאוס השמח של גידול שלושה בנים צעירים לבין היצירה, הוא מוצא את הקצב שלו גם בחיי המשפחה וגם בתחביבים שלו.</p>
-          <p>כשהוא לא עסוק בלהיות אבא מעורב, שלומי מפנה את הסבלנות ואת תשומת הלב לפרטים אל בניית טרריומים בהתאמה אישית — אקוסיסטמות מיניאטוריות שמקיימות את עצמן, עטופות זכוכית, כל אחת יצירת אמנות חיה ושקטה.</p>
-          <a class="btn btn--primary" href="he/contact.html" style="margin-top:26px; display:inline-block;">הזמינו עולם בהתאמה אישית</a>
+          <p>אני אבא לשלושה בנים, ואני אוהב טבע ועבודת יד. בין הבלגן השמח בבית עם שלושה ילדים קטנים לבין הרגעים שבהם אני יוצר, אני מצליח למצוא את האיזון שלי.</p>
+          <p>כשאני לא באמצע משהו עם הילדים, אני יושב ובונה טרריומים בהתאמה אישית. זה התחיל כתחביב והפך לאמנות של ממש: אני מתכנן עולמות קטנים שמסתדרים לבד בתוך הזכוכית, עם שכבות של אדמה, טחב וצמחים עדינים. כל אחד מהם הוא יצירה חיה ושקטה.</p>
+          <a class="btn btn--primary" href="he/contact.html" style="margin-top:26px; display:inline-block;">רוצים עולם בהתאמה אישית?</a>
         </div>
         <div class="story__img" data-reveal>
-          <img src="assets/about-shlomi.webp" alt="שלומי מרוז מרכיב טרריום עם פינצטה ליד שולחן העבודה" loading="lazy" />
+          <img src="assets/about-shlomi.webp" alt="שלומי מרכיב טרריום עם פינצטה ליד שולחן העבודה" loading="lazy" />
         </div>
       </section>
     </div>
@@ -105,10 +106,10 @@
   <footer class="footer" id="footer">
     <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
     <h2 class="footer__title">Terrar&nbsp;U</h2>
-    <p class="footer__tag">אקוסיסטמות חיות בזכוכית — מאז 2025</p>
+    <p class="footer__tag">עולמות חיים בזכוכית, מאז 2025</p>
     <div class="footer__links">
       <a href="#">אינסטגרם</a>
-      <a href="he/blog.html">מדריך טיפוח</a>
+      <a href="he/blog.html">מדריך טיפול</a>
       <a href="#">משלוחים</a>
       <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
     </div>
@@ -123,5 +124,6 @@
   <script src="js/common.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 const state = { size: "All", shape: "All", sort: "featured" };
 
 const TS = IS_HE
-  ? { tag: "ניתן להתאמה אישית עם דמויות וצמחים", customize: "התאמה אישית ←", view: "לצפייה ←",
-      world: "עולם אחד", worlds: "עולמות", empty: "אין עולמות שמתאימים לסינון — נסו להרחיב אותו.",
+  ? { tag: "אפשר להתאים אישית עם דמויות וצמחים", customize: "להתאמה אישית ←", view: "לפרטים ←",
+      world: "עולם אחד", worlds: "עולמות", empty: "לא מצאנו עולמות שמתאימים לסינון. נסו לשנות אותו קצת.",
       addLabel: (n) => `הוספת ${n} לעגלה` }
   : { tag: "Customizable with figurines &amp; plants", customize: "Customize &rarr;", view: "View options &rarr;",
       world: "world", worlds: "worlds", empty: "No worlds match this filter — try widening it.",

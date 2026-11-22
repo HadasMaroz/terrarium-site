@@ -24,7 +24,7 @@
 
   <header class="header" id="header">
     <a class="header__logo" href="index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="shop.html">Shop</a>
       <a href="about.html">Our Story</a>
       <a href="blog.html" class="is-current">Journal</a>
@@ -38,6 +38,7 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <main>
@@ -151,5 +152,6 @@
   <script src="js/common.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>

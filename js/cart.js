@@ -13,9 +13,9 @@ const Cart = (() => {
 
   /* UI strings per page language (IS_HE / PAGE_PREFIX come from catalog.js) */
   const T = (typeof IS_HE !== "undefined" && IS_HE)
-    ? { cart: "העגלה שלך", close: "סגירת עגלה", empty: "העגלה שלך ריקה.", explore: "לצפייה בקולקציה",
-        subtotal: 'סה"כ ביניים', note: "משלוח מחושב בקופה · חינם מעל $200", checkout: "לתשלום",
-        plant: "צמח", figs: "דמויות", inc: "הגדלת כמות", dec: "הקטנת כמות", remove: "הסרת" }
+    ? { cart: "העגלה שלך", close: "סגירת עגלה", empty: "העגלה שלך ריקה.", explore: "לקולקציה",
+        subtotal: "סכום ביניים", note: "המשלוח מחושב בשלב התשלום. חינם מעל $200", checkout: "לתשלום",
+        plant: "צמחים", figs: "דמויות", inc: "הוספת יחידה", dec: "הורדת יחידה", remove: "הסרת" }
     : { cart: "Your cart", close: "Close cart", empty: "Your cart is empty.", explore: "Explore the collection",
         subtotal: "Subtotal", note: "Shipping calculated at checkout · Free over $200", checkout: "Checkout",
         plant: "Plant", figs: "Figurines", inc: "Increase quantity", dec: "Decrease quantity", remove: "Remove" };

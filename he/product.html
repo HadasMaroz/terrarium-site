@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="../" />
-  <title>מוצר — Terrar U</title>
-  <meta name="description" content="התאימו אישית את הטרריום האטום שלכם: בחרו צמחים, הוסיפו דמויות מיניאטוריות והפכו אותו לשלכם." />
+  <title>מוצר | Terrar U</title>
+  <meta name="description" content="מתאימים אישית את הטרריום: בוחרים צמחים, מוסיפים דמויות קטנות והופכים אותו לשלכם." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate" hreflang="en" href="product.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/subpages.css" />
   <link rel="stylesheet" href="css/rtl.css" />
@@ -27,7 +27,7 @@
 
   <header class="header" id="header">
     <a class="header__logo" href="he/index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="he/shop.html" class="is-current">חנות</a>
       <a href="he/about.html">הסיפור שלנו</a>
       <a href="he/blog.html">יומן</a>
@@ -41,17 +41,18 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <main class="product" id="productRoot">
-    <nav class="product__crumbs" aria-label="פירורי לחם">
+    <nav class="product__crumbs" aria-label="נתיב ניווט">
       <a href="he/shop.html">קולקציה</a><span>/</span><span id="crumbName">…</span>
     </nav>
 
     <div class="product__layout">
       <div class="product__media">
         <img id="pImg" src="" alt="" />
-        <span class="card__tag" id="pCustomTag" hidden>ניתן להתאמה אישית עם דמויות וצמחים</span>
+        <span class="card__tag" id="pCustomTag" hidden>אפשר להתאים אישית עם דמויות וצמחים</span>
       </div>
 
       <div class="product__info">
@@ -67,40 +68,40 @@
 
         <!-- שלב 1: תערובת צמחים -->
         <fieldset class="opt" id="plantOpt">
-          <legend class="opt__legend"><span class="opt__step">01</span>בחרו את תערובת הצמחים</legend>
+          <legend class="opt__legend"><span class="opt__step">01</span>בוחרים תערובת צמחים</legend>
           <div class="swatches" id="plantSwatches"></div>
         </fieldset>
 
         <!-- שלב 2: דמויות -->
         <fieldset class="opt" id="figOpt">
-          <legend class="opt__legend"><span class="opt__step">02</span>הוסיפו דמויות מיניאטוריות <span class="opt__hint">אופציונלי</span></legend>
+          <legend class="opt__legend"><span class="opt__step">02</span>מוסיפים דמויות קטנות <span class="opt__hint">לא חובה</span></legend>
           <div class="figs" id="figGrid"></div>
         </fieldset>
 
         <div class="product__total">
-          <span>סה״כ</span>
+          <span>סך הכול</span>
           <span class="product__total-price" id="pTotal"></span>
         </div>
 
         <button class="btn btn--buy" id="addBtn" type="button">הוספה לעגלה</button>
 
-        <!-- אקורדיון טיפוח -->
+        <!-- הוראות טיפול -->
         <div class="acc">
           <details>
             <summary>אור</summary>
-            <p>אור עקיף ובהיר. אף פעם לא שמש ישירה — הזכוכית מרכזת חום. חלונות הפונים צפונה או מזרחה מושלמים.</p>
+            <p>אור בהיר ועקיף. לא שמש ישירה, כי הזכוכית מחממת. חלון שפונה צפונה או מזרחה הוא מושלם.</p>
           </details>
           <details>
             <summary>מים</summary>
-            <p>יצירות אטומות ממחזרות את הגשם שלהן ולא צריכות השקיה. יצירות פתוחות מקבלות ריסוס עדין פעם בחודש.</p>
+            <p>טרריום סגור ממחזר את המים שלו לבד ולא צריך השקיה. טרריום פתוח צריך קצת ריסוס פעם בחודש.</p>
           </details>
           <details>
-            <summary>גיזום ואורך חיים</summary>
-            <p>הצמיחה איטית בכוונה. אם שרך נוגע בזכוכית — פותחים, גוזמים וסוגרים מחדש: חמש דקות, פעמיים בשנה. כלי מאוזן חי עשרות שנים.</p>
+            <summary>גיזום ומשך חיים</summary>
+            <p>הצמחים גדלים לאט, וזה בכוונה. אם שרך נוגע בזכוכית, פותחים, גוזמים וסוגרים שוב. זה לוקח חמש דקות, פעמיים בשנה. טרריום מאוזן יכול לחיות עשרות שנים.</p>
           </details>
           <details>
             <summary>משלוח</summary>
-            <p>כל עולם נשלח נטוע, עטוף בקצף מתכלה ועם כרטיס טיפוח. משלוח חינם מעל $200.</p>
+            <p>כל טרריום יוצא אליכם כשהוא כבר נטוע, עטוף בקצף שמתכלה, ועם כרטיס הוראות טיפול. משלוח חינם מעל $200.</p>
           </details>
         </div>
       </div>
@@ -108,25 +109,25 @@
 
     <!-- מכירה צולבת -->
     <section class="cross">
-      <h2 class="cross__title" data-reveal>אולי יעניין אותך גם</h2>
+      <h2 class="cross__title" data-reveal>אולי יעניין אתכם גם</h2>
       <div class="cross__grid">
         <article class="cross__item" data-reveal>
-          <div class="cross__media"><img src="assets/extras/carekit.webp" alt="ערכת טיפוח לטרריום: פינצטה ארוכה, מספריים ומטלית זכוכית" loading="lazy" /></div>
-          <h3>ערכת טיפוח</h3>
-          <p>פינצטה ארוכה, מספריים לגיזום ומטלית זכוכית.</p>
-          <div class="cross__row"><span class="card__price">$39</span><button class="cross__add" data-cross="ערכת טיפוח" data-id="care-kit" data-img="assets/extras/carekit.webp" data-price="39">הוספה</button></div>
+          <div class="cross__media"><img src="assets/extras/carekit.webp" alt="ערכת טיפול לטרריום: פינצטה ארוכה, מספריים ומטלית לזכוכית" loading="lazy" /></div>
+          <h3>ערכת טיפול</h3>
+          <p>פינצטה ארוכה, מספריים לגיזום ומטלית לזכוכית.</p>
+          <div class="cross__row"><span class="card__price">$39</span><button class="cross__add" data-cross="ערכת טיפול" data-id="care-kit" data-img="assets/extras/carekit.webp" data-price="39">הוספה</button></div>
         </article>
         <article class="cross__item" data-reveal>
-          <div class="cross__media"><img src="assets/extras/mister.webp" alt="מרסס פליז וינטג׳ מפזר ענן רסס עדין" loading="lazy" /></div>
+          <div class="cross__media"><img src="assets/extras/mister.webp" alt="מרסס פליז בסגנון וינטג' שמפזר ענן רסס עדין" loading="lazy" /></div>
           <h3>מרסס פליז</h3>
           <p>בקבוק ריסוס עדין לטרריומים פתוחים.</p>
           <div class="cross__row"><span class="card__price">$19</span><button class="cross__add" data-cross="מרסס פליז" data-id="brass-mister" data-img="assets/extras/mister.webp" data-price="19">הוספה</button></div>
         </article>
         <article class="cross__item" data-reveal>
-          <div class="cross__media"><img src="assets/extras/led.webp" alt="טרריום זכוכית זוהר על בסיס LED הילה" loading="lazy" /></div>
-          <h3>בסיס LED הילה</h3>
-          <p>טבעת אור חמה לצמיחה, עם טיימר מובנה.</p>
-          <div class="cross__row"><span class="card__price">$49</span><button class="cross__add" data-cross="בסיס LED הילה" data-id="led-halo-base" data-img="assets/extras/led.webp" data-price="49">הוספה</button></div>
+          <div class="cross__media"><img src="assets/extras/led.webp" alt="טרריום זכוכית זוהר על בסיס תאורה" loading="lazy" /></div>
+          <h3>בסיס תאורה LED</h3>
+          <p>טבעת אור חמה שעוזרת לצמחים לגדול, עם טיימר מובנה.</p>
+          <div class="cross__row"><span class="card__price">$49</span><button class="cross__add" data-cross="בסיס תאורה LED" data-id="led-halo-base" data-img="assets/extras/led.webp" data-price="49">הוספה</button></div>
         </article>
       </div>
     </section>
@@ -135,10 +136,10 @@
   <footer class="footer" id="footer">
     <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
     <h2 class="footer__title">Terrar&nbsp;U</h2>
-    <p class="footer__tag">אקוסיסטמות חיות בזכוכית — מאז 2025</p>
+    <p class="footer__tag">עולמות חיים בזכוכית, מאז 2025</p>
     <div class="footer__links">
       <a href="#">אינסטגרם</a>
-      <a href="he/blog.html">מדריך טיפוח</a>
+      <a href="he/blog.html">מדריך טיפול</a>
       <a href="#">משלוחים</a>
       <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
     </div>
@@ -153,6 +154,7 @@
   <script src="js/common.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/product.js"></script>
 </body>
 </html>

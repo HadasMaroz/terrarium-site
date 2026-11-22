@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="../" />
-  <title>תשלום — Terrar U</title>
-  <meta name="description" content="תשלום מאובטח עבור הטרריום האטום שלכם." />
+  <title>תשלום | Terrar U</title>
+  <meta name="description" content="תשלום מאובטח על הטרריום שלכם." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate" hreflang="en" href="checkout.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/subpages.css" />
   <link rel="stylesheet" href="css/rtl.css" />
@@ -27,7 +27,7 @@
 
   <header class="header" id="header">
     <a class="header__logo" href="he/index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="he/shop.html">חנות</a>
       <a href="he/about.html">הסיפור שלנו</a>
       <a href="he/blog.html">יומן</a>
@@ -41,6 +41,7 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <main class="checkout" id="checkoutRoot">
@@ -51,8 +52,8 @@
 
     <!-- עגלה ריקה -->
     <div class="checkout__empty" id="coEmpty" hidden>
-      <p>העגלה ריקה — אין עדיין מה לשלם.</p>
-      <a class="btn btn--primary" href="he/shop.html">לצפייה בקולקציה</a>
+      <p>העגלה ריקה, אז עדיין אין מה לשלם.</p>
+      <a class="btn btn--primary" href="he/shop.html">לקולקציה</a>
     </div>
 
     <div class="checkout__layout" id="coLayout">
@@ -76,7 +77,7 @@
           <div class="co-grid co-grid--3">
             <div class="field"><input type="text" id="coCity" placeholder=" " required /><label for="coCity">עיר</label></div>
             <div class="field"><input type="text" id="coZip" placeholder=" " required /><label for="coZip">מיקוד</label></div>
-            <div class="field"><input type="text" id="coPhone" placeholder=" " /><label for="coPhone">טלפון (אופציונלי)</label></div>
+            <div class="field"><input type="text" id="coPhone" placeholder=" " /><label for="coPhone">טלפון (לא חובה)</label></div>
           </div>
         </section>
 
@@ -85,12 +86,12 @@
           <div class="ship-opts" id="shipOpts">
             <label class="ship-opt is-checked">
               <input type="radio" name="ship" value="standard" checked />
-              <span class="ship-opt__name">רגיל <em>5&ndash;8 ימי עסקים</em></span>
+              <span class="ship-opt__name">רגיל <em>5-8 ימי עסקים</em></span>
               <span class="ship-opt__price" id="stdPrice">$12</span>
             </label>
             <label class="ship-opt">
               <input type="radio" name="ship" value="express" />
-              <span class="ship-opt__name">אקספרס <em>1&ndash;2 ימי עסקים</em></span>
+              <span class="ship-opt__name">אקספרס <em>1-2 ימי עסקים</em></span>
               <span class="ship-opt__price">$24</span>
             </label>
           </div>
@@ -122,28 +123,28 @@
             </div>
             <p class="pay-note">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-              גרסת דמו — לא מתבצע חיוב אמיתי.
+              זו גרסת הדגמה, ולכן לא יתבצע חיוב אמיתי.
             </p>
           </div>
 
           <div class="pay-panel" id="payPaypal" hidden>
-            <p class="pay-note" style="margin-top:0">תועברו ל-PayPal להשלמת התשלום בצורה מאובטחת.</p>
-            <button type="button" class="btn btn--paypal" id="paypalBtn">המשך עם <strong>PayPal</strong></button>
+            <p class="pay-note" style="margin-top:0">נעביר אתכם ל-PayPal כדי להשלים את התשלום בצורה מאובטחת.</p>
+            <button type="button" class="btn btn--paypal" id="paypalBtn">להמשך עם <strong>PayPal</strong></button>
           </div>
         </section>
 
-        <button class="btn btn--buy checkout__place" id="placeBtn" type="submit">ביצוע הזמנה — <span id="placeTotal"></span></button>
+        <button class="btn btn--buy checkout__place" id="placeBtn" type="submit">להשלמת ההזמנה · <span id="placeTotal"></span></button>
       </form>
 
       <!-- עמודה 2: סיכום הזמנה -->
       <aside class="checkout__summary">
-        <h2 class="co-section__title">סיכום הזמנה</h2>
+        <h2 class="co-section__title">סיכום ההזמנה</h2>
         <div class="summary__items" id="sumItems"></div>
         <dl class="summary__rows">
           <div><dt>סכום ביניים</dt><dd id="sumSubtotal"></dd></div>
           <div><dt>משלוח</dt><dd id="sumShipping"></dd></div>
           <div><dt>מסים</dt><dd>כלולים</dd></div>
-          <div class="summary__total"><dt>סה״כ</dt><dd id="sumTotal"></dd></div>
+          <div class="summary__total"><dt>סך הכול</dt><dd id="sumTotal"></dd></div>
         </dl>
       </aside>
     </div>
@@ -151,19 +152,19 @@
     <!-- מסך אישור -->
     <div class="checkout__success" id="coSuccess" hidden>
       <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
-      <h2>העולם שלך בדרך אליך.</h2>
-      <p>הזמנה <strong id="orderNum"></strong> אושרה. קבלה בדרך לתיבת הדואר שלך, והטרריום שלך עובר לשולחן האריזה — נטוע, מרוסס ועטוף.</p>
-      <a class="btn btn--primary" href="he/index.html">חזרה ליער</a>
+      <h2>העולם שלכם בדרך אליכם.</h2>
+      <p>הזמנה <strong id="orderNum"></strong> התקבלה. קבלה תישלח אליכם למייל, והטרריום עובר עכשיו לשולחן האריזה: נטוע, מרוסס ועטוף כמו שצריך.</p>
+      <a class="btn btn--primary" href="he/index.html">חזרה לדף הבית</a>
     </div>
   </main>
 
   <footer class="footer" id="footer">
     <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
     <h2 class="footer__title">Terrar&nbsp;U</h2>
-    <p class="footer__tag">אקוסיסטמות חיות בזכוכית — מאז 2025</p>
+    <p class="footer__tag">עולמות חיים בזכוכית, מאז 2025</p>
     <div class="footer__links">
       <a href="#">אינסטגרם</a>
-      <a href="he/blog.html">מדריך טיפוח</a>
+      <a href="he/blog.html">מדריך טיפול</a>
       <a href="#">משלוחים</a>
       <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
     </div>
@@ -178,6 +179,7 @@
   <script src="js/common.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/checkout.js"></script>
 </body>
 </html>

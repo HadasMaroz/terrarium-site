@@ -4,8 +4,18 @@
    left/right rule in style.css + subpages.css and tunes type for Hebrew.
    ================================================== */
 
+/* Discovery (variable): Hebrew body and UI text. Headlines and the logo stay Barlev. */
+@font-face {
+  font-family: "Discovery";
+  src: url("../assets/fonts/Discovery_Fs-VF.woff2") format("woff2"),
+       url("../assets/fonts/Discovery_Fs-VF.woff") format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 html[lang="he"] {
-  --font-body: "Assistant", "Inter", sans-serif;
+  --font-body: "Discovery", "Inter", sans-serif;
 }
 html[lang="he"] body { font-weight: 400; line-height: 1.7; }
 
@@ -111,6 +121,9 @@ html[lang="he"] .summary__rows dd { text-align: left; }
   html[lang="he"] .bloom__quote--right { left: 6vw; }
   html[lang="he"] .hero__stage--1 { text-align: center; }
   html[lang="he"] .header .lang-switch { margin-left: 18px; margin-right: auto; }
+  html[lang="he"] .header__menu { margin-left: 0; margin-right: 4px; }
+  html[lang="he"] .header__nav { margin: 0; }
+  html[lang="he"] .header__nav a { font-size: 1.8rem; letter-spacing: 0; }
 }
 
 /* the sealed-vessel craft numbers and prices stay left-to-right glyph runs */

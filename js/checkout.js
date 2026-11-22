@@ -9,7 +9,7 @@ const emptyEl = document.getElementById("coEmpty");
 const successEl = document.getElementById("coSuccess");
 
 const TC = IS_HE
-  ? { free: "חינם", plant: "צמח", figs: "דמויות", fix: "בדקו בבקשה את השדות המסומנים", paypal: "גרסת דמו — ההפניה ל-PayPal כבויה כאן" }
+  ? { free: "חינם", plant: "צמחים", figs: "דמויות", fix: "תבדקו את השדות המסומנים", paypal: "זו גרסת הדגמה, החיבור ל-PayPal כבוי כאן" }
   : { free: "Free", plant: "Plant", figs: "Figurines", fix: "Please check the highlighted fields", paypal: "Demo build — PayPal redirect is disabled here" };
 
 /* ---------- totals ---------- */

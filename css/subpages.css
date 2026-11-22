@@ -636,6 +636,65 @@
   .header .lang-switch { margin-left: auto; }
 }
 
+/* ---------- mobile hamburger menu ---------- */
+.header__menu { display: none; }
+@media (max-width: 620px) {
+  .header__menu {
+    display: block; position: relative; flex: 0 0 auto;
+    width: 42px; height: 42px; margin-left: 4px;
+  }
+  .header__menu span {
+    position: absolute; left: 10px; right: 10px; height: 1.5px;
+    background: var(--ink); border-radius: 2px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), top 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .header__menu span:nth-child(1) { top: 16px; }
+  .header__menu span:nth-child(2) { top: 25px; }
+  .header.menu-open .header__menu span:nth-child(1) { top: 20.5px; transform: rotate(45deg); }
+  .header.menu-open .header__menu span:nth-child(2) { top: 20.5px; transform: rotate(-45deg); }
+
+  /* the header gets a solid plate while the menu is open */
+  .header.menu-open {
+    background: rgba(7, 10, 8, 0.97);
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* dropdown: CSS-only transition, so it can never get stuck off-screen */
+  .header__nav {
+    display: flex; flex-direction: column;
+    position: fixed; top: var(--header-h); left: 0; right: 0;
+    margin: 0; padding: 6px clamp(20px, 6vw, 40px) 26px;
+    background: rgba(7, 10, 8, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    opacity: 0; visibility: hidden; transform: translateY(-10px);
+    transition: opacity 0.3s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.45s;
+  }
+  .header.menu-open .header__nav {
+    opacity: 1; visibility: visible; transform: none;
+    transition-delay: 0s;
+  }
+  .header__nav a {
+    font-family: var(--font-display); font-size: 1.9rem; letter-spacing: 0.04em;
+    padding: 15px 0; border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.35s, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s;
+  }
+  .header__nav a:last-child { border-bottom: 0; }
+  .header__nav a::after { display: none; }
+  .header__nav a.is-current { color: var(--moss); }
+  .header.menu-open .header__nav a { opacity: 1; transform: none; }
+  .header.menu-open .header__nav a:nth-child(1) { transition-delay: 0.05s; }
+  .header.menu-open .header__nav a:nth-child(2) { transition-delay: 0.1s; }
+  .header.menu-open .header__nav a:nth-child(3) { transition-delay: 0.15s; }
+  .header.menu-open .header__nav a:nth-child(4) { transition-delay: 0.2s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header__nav, .header__nav a, .header__menu span { transition: none !important; }
+}
+
 /* ---------- subpage responsive ---------- */
 @media (max-width: 1080px) {
   .shop__grid, .journal__grid, .cross__grid { grid-template-columns: repeat(2, 1fr); }

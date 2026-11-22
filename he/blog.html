@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="../" />
-  <title>יומן — Terrar U</title>
-  <meta name="description" content="מדריכי טיפוח לטרריום, טיפים לעיצוב וזרקורי צמחים מהסטודיו של Terrar U." />
+  <title>יומן | Terrar U</title>
+  <meta name="description" content="מדריכי טיפול בטרריום, טיפים לעיצוב והיכרות עם צמחים, מהסטודיו של Terrar U." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate" hreflang="en" href="blog.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/subpages.css" />
   <link rel="stylesheet" href="css/rtl.css" />
@@ -27,7 +27,7 @@
 
   <header class="header" id="header">
     <a class="header__logo" href="he/index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="he/shop.html">חנות</a>
       <a href="he/about.html">הסיפור שלנו</a>
       <a href="he/blog.html" class="is-current">יומן</a>
@@ -41,25 +41,26 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <main>
     <section class="page-banner">
       <p class="section-eyebrow" data-reveal>יומן</p>
-      <h1 class="section-title" data-reveal>רשימות מעולמות<br/>קטנים.</h1>
+      <h1 class="section-title" data-reveal>סיפורים<br/>מעולמות קטנים.</h1>
     </section>
 
     <div class="journal">
       <!-- מאמר מוביל -->
       <article class="featured" data-reveal>
         <div class="featured__bg">
-          <img src="assets/seq3-lg/f_0110.webp" alt="נחל מיניאטורי עם פרחים כחולים בתוך טרריום" />
+          <img src="assets/seq3-lg/f_0110.webp" alt="נחל קטן עם פרחים כחולים בתוך טרריום" />
         </div>
         <div class="featured__body">
-          <span class="pill">טיפוח הטרריום</span>
-          <h2 class="featured__title">מחזור המים האטום, מוסבר</h2>
-          <p class="featured__excerpt">איך צנצנת עם פקק מגשימה על עצמה: עיבוי, פעולה נימית, ולמה הטרריום שלך לא היה צריך אותך שלושה חודשים.</p>
-          <div class="post-meta"><span>28 ביוני 2026</span><span>·</span><span>7 דקות קריאה</span><span>·</span><a class="post__more" href="#">קראו עוד ←</a></div>
+          <span class="pill">טיפול בטרריום</span>
+          <h2 class="featured__title">איך עובד מחזור המים בטרריום סגור</h2>
+          <p class="featured__excerpt">איך צנצנת עם פקק מייצרת לעצמה גשם: אדים, התעבות, ולמה הטרריום שלכם לא ביקש מכם כלום כבר שלושה חודשים.</p>
+          <div class="post-meta"><span>28 ביוני 2026</span><span>·</span><span>7 דקות קריאה</span><span>·</span><a class="post__more" href="#">להמשך קריאה ←</a></div>
         </div>
       </article>
 
@@ -67,11 +68,11 @@
         <article class="post" data-reveal>
           <div class="post__img"><img src="assets/seq4-lg/f_0170.webp" alt="ניצני נרקיס נפתחים בצילום מואץ" /></div>
           <div class="post__body">
-            <span class="pill">זרקור צמח</span>
-            <h3 class="post__title">למה טחב הוא הדייר הראשון המושלם</h3>
-            <p class="post__excerpt">בלי שורשים, בלי דרישות, אלף גווני ירוק. הכירו את המין שנושא כל עולם שאנחנו בונים.</p>
+            <span class="pill">מכירים צמח</span>
+            <h3 class="post__title">למה טחב הוא הדייר הכי מתאים להתחלה</h3>
+            <p class="post__excerpt">אין לו שורשים, הוא כמעט לא דורש כלום, ויש לו אלף גוונים של ירוק. בואו נכיר את הצמח שנמצא בכל עולם שאנחנו בונים.</p>
             <div class="post-meta"><span>14 ביוני 2026</span><span>·</span><span>4 דקות קריאה</span></div>
-            <a class="post__more" href="#">קראו עוד ←</a>
+            <a class="post__more" href="#">להמשך קריאה ←</a>
           </div>
         </article>
 
@@ -79,32 +80,32 @@
           <div class="post__img"><img src="assets/seq2-lg/f_0140.webp" alt="משושה ניאון זוהר בין עלי דקל" /></div>
           <div class="post__body">
             <span class="pill">טיפים לעיצוב</span>
-            <h3 class="post__title">להאיר פסל חי</h3>
-            <p class="post__excerpt">תאורה מאחור, הילה או אדן חלון? שלוש דרכים להעמיד זכוכית כך שהיער שבפנים ידבר בעצמו.</p>
+            <h3 class="post__title">איך מאירים פסל חי</h3>
+            <p class="post__excerpt">תאורה מאחור, טבעת אור או אדן חלון? שלוש דרכים להציב זכוכית כך שהיער שבפנים יעשה את העבודה.</p>
             <div class="post-meta"><span>30 במאי 2026</span><span>·</span><span>5 דקות קריאה</span></div>
-            <a class="post__more" href="#">קראו עוד ←</a>
+            <a class="post__more" href="#">להמשך קריאה ←</a>
           </div>
         </article>
 
         <article class="post" data-reveal>
           <div class="post__img"><img src="assets/products/p4.webp" alt="טרריום בצנצנת גבוהה עם שרכים" /></div>
           <div class="post__body">
-            <span class="pill">טיפוח הטרריום</span>
-            <h3 class="post__title">עיבוי: חבר, לא פגם</h3>
-            <p class="post__excerpt">ערפל בוקר על הזכוכית אומר שהמחזור חי. הנה איך לקרוא מה העולם שלך מספר לך.</p>
+            <span class="pill">טיפול בטרריום</span>
+            <h3 class="post__title">אדים על הזכוכית: סימן טוב, לא תקלה</h3>
+            <p class="post__excerpt">ערפל בבוקר על הזכוכית אומר שהמחזור חי ופועל. הנה איך להבין מה הטרריום שלכם מנסה להגיד לכם.</p>
             <div class="post-meta"><span>18 במאי 2026</span><span>·</span><span>3 דקות קריאה</span></div>
-            <a class="post__more" href="#">קראו עוד ←</a>
+            <a class="post__more" href="#">להמשך קריאה ←</a>
           </div>
         </article>
 
         <article class="post" data-reveal>
           <div class="post__img"><img src="assets/products/p5.webp" alt="טרריום סוקולנטים פתוח בזכוכית שקופה" /></div>
           <div class="post__body">
-            <span class="pill">טיפוח הטרריום</span>
-            <h3 class="post__title">פתוח או אטום: בחירת האקלים שלך</h3>
-            <p class="post__excerpt">מדבר או יער גשם? ההחלטה האחת שקובעת הכול לגבי איך הטרריום שלך חי.</p>
+            <span class="pill">טיפול בטרריום</span>
+            <h3 class="post__title">פתוח או סגור? איך בוחרים אקלים</h3>
+            <p class="post__excerpt">מדבר או יער גשם? זו ההחלטה שקובעת איך הטרריום שלכם יחיה.</p>
             <div class="post-meta"><span>2 במאי 2026</span><span>·</span><span>6 דקות קריאה</span></div>
-            <a class="post__more" href="#">קראו עוד ←</a>
+            <a class="post__more" href="#">להמשך קריאה ←</a>
           </div>
         </article>
 
@@ -112,21 +113,21 @@
           <div class="post__img"><img src="assets/seq3-lg/f_0040.webp" alt="שרכים וטחב בתוך צנצנת זכוכית" /></div>
           <div class="post__body">
             <span class="pill">טיפים לעיצוב</span>
-            <h3 class="post__title">דמויות מיניאטוריות, מקסימום סיפור</h3>
-            <p class="post__excerpt">מטייל זעיר משנה את הסקאלה של הכול. איך דמות אחת הופכת צנצנת נטועה לנרטיב.</p>
+            <h3 class="post__title">דמויות קטנות, סיפור גדול</h3>
+            <p class="post__excerpt">מטייל זעיר משנה את הפרופורציות של הכול. כך דמות אחת הופכת צנצנת עם צמחים לסצנה עם סיפור.</p>
             <div class="post-meta"><span>20 באפריל 2026</span><span>·</span><span>4 דקות קריאה</span></div>
-            <a class="post__more" href="#">קראו עוד ←</a>
+            <a class="post__more" href="#">להמשך קריאה ←</a>
           </div>
         </article>
 
         <article class="post" data-reveal>
-          <div class="post__img"><img src="assets/products/p2.webp" alt="כדור אחו פורח עם פרחי בר" /></div>
+          <div class="post__img"><img src="assets/products/p2.webp" alt="כדור זכוכית עם אחו של פרחי בר" /></div>
           <div class="post__body">
-            <span class="pill">זרקור צמח</span>
+            <span class="pill">מכירים צמח</span>
             <h3 class="post__title">פרחי בר מתחת לזכוכית</h3>
-            <p class="post__excerpt">חינניות וזכריני בכדור אטום — מיני האלפים שפורחים בשמחה מאחורי זכוכית.</p>
+            <p class="post__excerpt">חינניות וזכריני בכדור סגור: פרחים מההרים שפורחים בשמחה גם מאחורי זכוכית.</p>
             <div class="post-meta"><span>6 באפריל 2026</span><span>·</span><span>5 דקות קריאה</span></div>
-            <a class="post__more" href="#">קראו עוד ←</a>
+            <a class="post__more" href="#">להמשך קריאה ←</a>
           </div>
         </article>
       </div>
@@ -136,10 +137,10 @@
   <footer class="footer" id="footer">
     <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
     <h2 class="footer__title">Terrar&nbsp;U</h2>
-    <p class="footer__tag">אקוסיסטמות חיות בזכוכית — מאז 2025</p>
+    <p class="footer__tag">עולמות חיים בזכוכית, מאז 2025</p>
     <div class="footer__links">
       <a href="#">אינסטגרם</a>
-      <a href="he/blog.html">מדריך טיפוח</a>
+      <a href="he/blog.html">מדריך טיפול</a>
       <a href="#">משלוחים</a>
       <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
     </div>
@@ -154,5 +155,6 @@
   <script src="js/common.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>

@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="../" />
-  <title>חנות — Terrar U</title>
-  <meta name="description" content="טרריומים אטומים בעבודת יד: בקבוקים, כדורים, קוביות ועמודים. סינון לפי גודל, צורה ומחיר." />
+  <title>חנות | Terrar U</title>
+  <meta name="description" content="טרריומים בעבודת יד: בקבוקים, כדורים, קוביות ועמודים. אפשר לסנן לפי גודל, צורה ומחיר." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate" hreflang="en" href="shop.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/subpages.css" />
   <link rel="stylesheet" href="css/rtl.css" />
@@ -27,7 +27,7 @@
 
   <header class="header" id="header">
     <a class="header__logo" href="he/index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="he/shop.html" class="is-current">חנות</a>
       <a href="he/about.html">הסיפור שלנו</a>
       <a href="he/blog.html">יומן</a>
@@ -41,13 +41,14 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <main>
     <section class="page-banner">
       <p class="section-eyebrow" data-reveal>הקולקציה</p>
-      <h1 class="section-title" data-reveal>עולמות אטומים,<br/>מוכנים לחיות איתך.</h1>
-      <p class="page-banner__sub" data-reveal>כל יצירה מורכבת ביד ונאטמת לעשרות שנים. את רובן אפשר להתאים אישית עם צמחים ודמויות מיניאטוריות.</p>
+      <h1 class="section-title" data-reveal>עולם שלם בתוך צנצנת</h1>
+      <p class="page-banner__sub" data-reveal>כל טרריום מורכב ביד ונסגר לעשרות שנים. את רובם אפשר להתאים אישית עם צמחים ודמויות קטנות.</p>
     </section>
 
     <div class="filterbar" id="filterbar" data-reveal>
@@ -86,10 +87,10 @@
   <footer class="footer" id="footer">
     <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
     <h2 class="footer__title">Terrar&nbsp;U</h2>
-    <p class="footer__tag">אקוסיסטמות חיות בזכוכית — מאז 2025</p>
+    <p class="footer__tag">עולמות חיים בזכוכית, מאז 2025</p>
     <div class="footer__links">
       <a href="#">אינסטגרם</a>
-      <a href="he/blog.html">מדריך טיפוח</a>
+      <a href="he/blog.html">מדריך טיפול</a>
       <a href="#">משלוחים</a>
       <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
     </div>
@@ -104,6 +105,7 @@
   <script src="js/common.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/shop.js"></script>
 </body>
 </html>

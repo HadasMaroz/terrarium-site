@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="../" />
-  <title>Terrar U — אקוסיסטמות חיות בזכוכית</title>
-  <meta name="description" content="טרריומים אטומים בעבודת יד. יערות מקיימי-עצמם שחיים עשרות שנים." />
+  <title>Terrar U | עולמות חיים בזכוכית</title>
+  <meta name="description" content="טרריומים סגורים בעבודת יד. יערות קטנים שמסתדרים לבד ויכולים לחיות עשרות שנים." />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="alternate" hreflang="en" href="index.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&family=Assistant:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/subpages.css" />
   <link rel="stylesheet" href="css/rtl.css" />
@@ -38,7 +38,7 @@
   <!-- ======= הדר ======= -->
   <header class="header" id="header">
     <a class="header__logo" href="he/index.html"><svg class="logo-mark"><use href="#leaf-mark"/></svg>Terrar&nbsp;U</a>
-    <nav class="header__nav">
+    <nav class="header__nav" id="mainNav">
       <a href="he/shop.html">חנות</a>
       <a href="he/about.html">הסיפור שלנו</a>
       <a href="he/blog.html">יומן</a>
@@ -52,6 +52,7 @@
       </svg>
       <span class="header__cart-count" id="cartCount">0</span>
     </button>
+    <button class="header__menu" id="menuBtn" type="button" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav"><span></span><span></span></button>
   </header>
 
   <!-- ======= הירו: רצף תמונות מונע-גלילה ======= -->
@@ -62,13 +63,13 @@
 
       <div class="hero__stage hero__stage--1" data-stage="1">
         <div class="hero__intro">
-          <p class="hero__eyebrow reveal-line">אקוסיסטמות אטומות בעבודת יד</p>
+          <p class="hero__eyebrow reveal-line">עולמות קטנים בזכוכית, בעבודת יד</p>
           <h1 class="hero__title">
             <span class="reveal-line">טבע.</span>
             <span class="reveal-line">עיצוב.</span>
             <span class="reveal-line">בית.</span>
           </h1>
-          <p class="hero__sub reveal-line">טרריומים מקיימי-עצמם שחיים עשרות שנים — בלי השקיה, בלי תחזוקה. רק חיים, שמתגלים בשקט מאחורי הזכוכית.</p>
+          <p class="hero__sub reveal-line">טרריומים שמסתדרים לבד ויכולים לחיות עשרות שנים. בלי להשקות ובלי להתאמץ. רק טבע שגדל לו בשקט מאחורי הזכוכית.</p>
           <div class="reveal-line">
             <a class="btn btn--primary hero__cta" href="he/index.html#collection">לקולקציה</a>
           </div>
@@ -76,17 +77,17 @@
       </div>
 
       <div class="hero__stage hero__stage--2" data-stage="2">
-        <h2 class="hero__caption">היכנסו פנימה.</h2>
-        <p class="hero__caption-sub">מאחורי הזכוכית יער שלם נושם — ערפל, אור וקרקע חיה.</p>
+        <h2 class="hero__caption">בואו להציץ פנימה.</h2>
+        <p class="hero__caption-sub">מאחורי הזכוכית נושם יער שלם: ערפל, אור ואדמה חיה.</p>
       </div>
 
       <div class="hero__stage hero__stage--3" data-stage="3">
-        <h2 class="hero__caption hero__caption--final">מזמינים את הטבע פנימה</h2>
-        <a class="btn btn--primary" href="he/index.html#collection">לצפייה בקולקציה</a>
+        <h2 class="hero__caption hero__caption--final">מכניסים את הטבע הביתה</h2>
+        <a class="btn btn--primary" href="he/index.html#collection">לכל הקולקציה</a>
       </div>
 
       <div class="hero__scrollhint" id="scrollHint">
-        <span>גלילה</span>
+        <span>גללו למטה</span>
         <div class="hero__scrollhint-line"></div>
       </div>
     </div>
@@ -96,8 +97,8 @@
   <section class="bloom">
     <div class="bloom__sticky">
       <canvas class="bloom__canvas" id="bloomCanvas" aria-hidden="true"></canvas>
-      <blockquote class="bloom__quote bloom__quote--left">אוטמים חופן יער מאחורי זכוכית, והוא לומד לחיות בכוחות עצמו —</blockquote>
-      <blockquote class="bloom__quote bloom__quote--right">נושם את הגשם שלו, מזין את האדמה שלו, ופורח לעבר כל אור שתתנו לו.</blockquote>
+      <blockquote class="bloom__quote bloom__quote--left">אם סוגרים חופן יער בתוך זכוכית, הוא לומד להסתדר לבד,</blockquote>
+      <blockquote class="bloom__quote bloom__quote--right">לייצר לעצמו גשם, להזין את האדמה שלו ולגדול לכיוון כל אור שנותנים לו.</blockquote>
       <div class="bloom__fade" aria-hidden="true"></div>
     </div>
   </section>
@@ -106,7 +107,7 @@
   <section class="collection" id="collection">
     <div class="collection__head">
       <p class="section-eyebrow">הקולקציה</p>
-      <h2 class="section-title">עולמות אטומים,<br/>מוכנים לחיות איתך.</h2>
+      <h2 class="section-title">עולם שלם בתוך צנצנת</h2>
     </div>
 
     <div class="collection__grid" id="productGrid">
@@ -122,31 +123,30 @@
 
       <div class="craft__stage" data-craft="0">
         <span class="craft__num">01</span>
-        <h3 class="craft__title">נאסף</h3>
-        <p class="craft__desc">טחב ושרכים נאספים באחריות ועוברים הסגר של שישה שבועות לפני ההרכבה.</p>
+        <h3 class="craft__title">אוספים</h3>
+        <p class="craft__desc">אוספים טחב ושרכים בזהירות, ושומרים אותם בצד שישה שבועות לפני שמתחילים להרכיב.</p>
       </div>
       <div class="craft__stage" data-craft="1">
         <span class="craft__num">02</span>
-        <h3 class="craft__title">מורכב</h3>
-        <p class="craft__desc">כל נוף נבנה ביד — ניקוז, מצע, אלמנטים קשיחים ושתילה, שכבה אחר שכבה.</p>
+        <h3 class="craft__title">מרכיבים</h3>
+        <p class="craft__desc">כל נוף נבנה ביד, שכבה אחרי שכבה: ניקוז, אדמה, אבנים, ענפים וצמחים.</p>
       </div>
       <div class="craft__stage" data-craft="2">
         <span class="craft__num">03</span>
-        <h3 class="craft__title">נאטם</h3>
-        <p class="craft__desc">משהאיזון הושג, הכלי נסגר בפקק. מחזור המים מתחיל, ולעולם לא יצטרך אותך שוב.</p>
+        <h3 class="craft__title">סוגרים</h3>
+        <p class="craft__desc">כשהכול מאוזן, סוגרים את הכלי בפקק. מחזור המים מתחיל לעבוד, ומהרגע הזה הוא כבר לא צריך אתכם.</p>
       </div>
 
       <div class="craft__stage craft__stage--about" data-craft="3" id="about">
         <div class="about__grid">
           <div class="about__text">
-            <p class="section-eyebrow">היוצר</p>
+            <p class="section-eyebrow">מי אני</p>
             <h3 class="about__title">היי, אני שלומי!</h3>
-            <p>שלומי מרוז הוא אב מסור לשלושה בנים ויוצר נלהב עם אהבה עמוקה לטבע ולעבודת יד. בין הכאוס השמח והאנרגטי של גידול שלושה בנים צעירים לבין היצירה, שלומי מוצא את הקצב המושלם שלו גם בחיי המשפחה וגם בתחביבים הייחודיים שלו.</p>
-            <p>כשהוא לא עסוק בלהיות אבא מעורב, שלומי מפנה את הסבלנות ואת תשומת הלב לפרטים אל בניית טרריומים יפהפיים בהתאמה אישית. מה שהתחיל כתחביב מרתק הפך לאמנות של ממש — תכנון אקוסיסטמות מיניאטוריות מקיימות-עצמן, עטופות זכוכית. כל טרריום משקף את ההערכה שלו לטבע, ומשלב שכבות של אדמה, טחב וירק עדין ליצירת יצירת אמנות חיה ושלווה.</p>
-            <p>בין אם הוא מנווט בהרפתקאות האבהות ובין אם הוא מפסל בקפידה עולם ירוק זעיר, שלומי מביא יצירתיות, מסירות ונגיעה מחושבת לכל מה שהוא עושה.</p>
+            <p>אני אבא לשלושה בנים, ואני אוהב טבע ועבודת יד. בין הבלגן השמח בבית עם שלושה ילדים קטנים לבין הרגעים שבהם אני יוצר, אני מצליח למצוא את האיזון שלי.</p>
+            <p>כשאני לא באמצע משהו עם הילדים, אני יושב ובונה טרריומים בהתאמה אישית. זה התחיל כתחביב והפך לאמנות של ממש: אני מתכנן עולמות קטנים שמסתדרים לבד בתוך הזכוכית, עם שכבות של אדמה, טחב וצמחים עדינים. כל אחד מהם הוא יצירה חיה ושקטה.</p>
           </div>
           <div class="about__media">
-            <img src="assets/about-shlomi.webp" alt="שלומי מרוז מרכיב טרריום עם פינצטה ליד שולחן העבודה" />
+            <img src="assets/about-shlomi.webp" alt="שלומי מרכיב טרריום עם פינצטה ליד שולחן העבודה" />
           </div>
         </div>
       </div>
@@ -157,10 +157,10 @@
   <footer class="footer" id="footer">
     <svg class="logo-mark logo-mark--footer"><use href="#leaf-mark"/></svg>
     <h2 class="footer__title">Terrar&nbsp;U</h2>
-    <p class="footer__tag">אקוסיסטמות חיות בזכוכית — מאז 2025</p>
+    <p class="footer__tag">עולמות חיים בזכוכית, מאז 2025</p>
     <div class="footer__links">
       <a href="#">אינסטגרם</a>
-      <a href="he/blog.html">מדריך טיפוח</a>
+      <a href="he/blog.html">מדריך טיפול</a>
       <a href="#">משלוחים</a>
       <a href="mailto:hello@terraru.studio">hello@terraru.studio</a>
     </div>
@@ -174,6 +174,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/menu.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
