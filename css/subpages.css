@@ -216,7 +216,17 @@
   transition: border-color 0.4s, transform 0.4s;
 }
 .cross__item:hover { border-color: rgba(143, 191, 127, 0.4); transform: translateY(-4px); }
-.cross__icon { color: var(--moss); margin-bottom: 16px; }
+.cross__item { overflow: hidden; }
+.cross__media {
+  margin: -26px -24px 22px;
+  aspect-ratio: 4 / 3; overflow: hidden;
+  border-bottom: 1px solid var(--line); background: var(--bg);
+}
+.cross__media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cross__item:hover .cross__media img { transform: scale(1.06); }
 .cross__item h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.38rem; }
 .cross__item p { color: var(--ink-dim); font-size: 0.82rem; margin: 6px 0 18px; }
 .cross__row { display: flex; align-items: center; justify-content: space-between; }
