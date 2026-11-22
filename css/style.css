@@ -231,6 +231,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: var(--ink); color: var(--bg); border-color: var(--ink);
   transform: translateY(-2px);
 }
+/* hero buttons sit on moving footage: a 50% black plate keeps them readable */
+.hero .btn--primary { background: rgba(0, 0, 0, 0.5); }
+.hero .btn--primary:hover { background: var(--ink); }
 
 /* ============ Bloom bridge ============ */
 .bloom {
