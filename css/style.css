@@ -485,6 +485,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .footer__links a:hover { color: var(--moss); }
 .footer__legal { font-size: 0.7rem; color: rgba(154, 167, 154, 0.5); }
+.footer__legal a { transition: color 0.3s; }
+.footer__legal a:hover { color: var(--moss); }
 
 /* ============ Toast ============ */
 .toast {
